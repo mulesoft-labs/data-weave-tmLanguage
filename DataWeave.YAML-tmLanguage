@@ -1,9 +1,9 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
----
-fileTypes: [dwl]
 name: DataWeave
-scopeName: source.dw
-uuid: d508c059-a938-4779-b2bc-ff43a5098907
+scopeName: source.data-weave
+fileTypes: [dwl]
+uuid: ba6390ae-c50f-4dce-97f1-951dab8fc607
+
 patterns:
 - include: '#comments'
 - include: '#imports'
@@ -11,71 +11,61 @@ patterns:
 - include: '#statements'
 
 repository:
-  classes:
-    begin: (?=\s*(?:companion|class|object|interface))
-    end: '}|(?=$)'
+  case-clause:
+    name: case-clause.expr.dw
+    begin: (?<!\.|\$)\b(case|else(?=\s*->))\b(?!\$|\.)
+    beginCaptures:
+      '1': {name: keyword.control.switch.dw}
+    end: \-\>
+    endCaptures:
+      '0': {name: keyword.control.switch.dw}
     patterns:
-    - begin: \b(companion\s*)?(class|object|interface)\b
+    - begin: (?<!\.|\$)\b(is)\s+
       beginCaptures:
-        '1': {name: keyword.other.dw}
-      end: (?=<|{|\(|:)
+        '1': {name: keyword.control.as.dw}
+      end: (?=\-\>)
       patterns:
-      - {match: \b(object)\b, name: keyword.other.dw}
-      - {match: \w+, name: entity.name.type.class.dw}
-    - begin: <
-      end: '>'
-      patterns:
-      - {include: '#generics'}
-    - begin: \(
-      end: \)
-      patterns:
-      - {include: '#parameters'}
-    - begin: (:)
-      beginCaptures:
-        '1': {name: keyword.operator.declaration.dw}
-      end: (?={|$)
-      patterns:
-      - {match: \w+, name: entity.other.inherited-class.dw}
-      - begin: \(
-        end: \)
-        patterns:
-        - {include: '#expressions'}
-    - begin: \{
-      end: \}
-      patterns:
-      - {include: '#statements'}
+      - include: '#types'
+    - include: '#expressions'
+
   comments:
     patterns:
-    - begin: /\*
+    - name: comment.block.dw
+      begin: /\*
+      end: \*/
       captures:
         '0': {name: punctuation.definition.comment.dw}
-      end: \*/
-      name: comment.block.dw
-    - captures:
+    - match: \s*((//).*$\n?)
+      captures:
         '1': {name: comment.line.double-slash.dw}
         '2': {name: punctuation.definition.comment.dw}
-      match: \s*((//).*$\n?)
+
   constants:
     patterns:
-    - {match: \b(true|false|null)\b, name: constant.language.dw}
-    - {match: '\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?\b',
-      name: constant.numeric.dw}
-    # - {match: '\b([A-Z][A-Z0-9_]+)\b', name: constant.other.dw}
+    - name: constant.language.dw
+      match: \b(true|false|null)\b
+    - name: constant.numeric.dw
+      match: \b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?\b
+
+  dw-directive:
+    name: meta.directive.ns.dw
+    begin: (?<!\.|\$)(%dw)\s+([0-9]\.[0-9])(?!\$|\.)
+    beginCaptures:
+      '1': {name: comment.dw}
+      '2': {name: comment.dw}
+    end: (?=\n)
+
   expressions:
     patterns:
-    - {include: '#paren-expression'}
-    - {include: '#strings'}
-    - {include: '#constants'}
-    - {include: '#comments'}
+    - include: '#paren-expression'
+    - include: '#strings'
+    - include: '#constants'
+    - include: '#comments'
     - include: '#match-statement'
+    - include: '#regex'
     - include: '#keywords'
     - include: '#object-literal'
-
-  paren-expression:
-    begin: \(
-    end: \)
-    patterns:
-    - {include: '#expressions'}
+    - include: '#array-literal'
 
   functions:
     begin: (?=\s*(?:fun))
@@ -92,23 +82,24 @@ repository:
       - begin: <
         end: '>'
         patterns:
-        - {include: '#generics'}
+        - include: '#generics'
     - begin: \(
       end: \)
       patterns:
-      - {include: '#parameters'}
+      - include: '#parameters'
     - begin: (:)
       beginCaptures:
         '1': {name: keyword.operator.declaration.dw}
       end: (?==)
       patterns:
-      - {include: '#types'}
+      - include: '#types'
     - begin: (=)
       beginCaptures:
         '1': {name: keyword.operator.assignment.dw}
       end: (?=$)
       patterns:
-      - {include: '#expressions'}
+      - include: '#expressions'
+
   generics:
     patterns:
     - begin: (:)
@@ -116,40 +107,169 @@ repository:
         '1': {name: keyword.operator.declaration.dw}
       end: (?=,|>)
       patterns:
-      - {include: '#types'}
-    - {match: "<:", name: keyword.operator.extends.dw}
-    - {include: '#keywords'}
-    - {match: \w+, name: storage.type.generic.dw}
-  
+      - include: '#types'
+    - name: keyword.operator.extends.dw
+      match: '<:'
+    - include: '#keywords'
+    - name: entity.name.type.parameter.dw
+      match: \w+
+
   imports:
     patterns:
-    - captures:
+    - match: ^\s*(import)\s+[^ $]+\s+(from)?
+      captures:
         '1': {name: keyword.other.dw}
         '2': {name: keyword.other.dw}
-      match: ^\s*(import)\s+[^ $]+\s+(from)?
+
+  input-directive:
+    name: meta.directive.ns.dw
+    begin: (?<!\.|\$)\b(input)\s+([[:alpha:]][[:alnum:]]*)\s*
+    end: (?=\n)
+    beginCaptures:
+      '1': {name: keyword.other.dw}
+      '2': {name: entity.name.ns.dw}
+    patterns:
+    - begin: (\:\s*)
+      beginCaptures:
+        '1': {name: keyword.other.dw}
+      end: (\s|\n)
+      patterns:
+      - include: '#types'
+
+    - match: ([^{\n\s])
+      name: string.mime.dw
+
+
   keywords:
     patterns:
-    - {match: \b(var|val|public|private|protected|abstract|final|enum|open|attribute|annotation|override|inline|var|val|vararg|lazy|in|out|internal|data|tailrec|operator|infix|const|yield|typealias|typeof)\b,
-      name: storage.modifier.dw}
-    - {match: \b(try|catch|finally|throw)\b, name: keyword.control.catch-exception.dw}
-    - {match: \b(if|else|while|for|do|return|when|where|break|continue)\b, name: keyword.control.dw}
+    - name: storage.modifier.dw
+      match: \b(var|fun|ns)\b
+    - name: keyword.reserved.dw
+      match: \b(input|output|type|var|ns|import|try|catch|throw|do|for|yield|enum|private|async)\b
+    - name: keyword.control.dw
+      match: \b(if|else|while|for|do|using|unless|default)\b
     - begin: (?<!\.|\$)\b(as|is)\s+
       beginCaptures:
-        '1': { name: keyword.control.as.dw }
+        '1': {name: keyword.control.as.dw}
       end: (?=$|^|[;,:})\]])
       patterns:
       - include: '#types'
-    - {match: (==|!=|===|!==|<=|>=|<|>), name: keyword.operator.comparison.dw}
-    - {match: (=), name: keyword.operator.assignment.dw}
-    - {match: '(:)', name: keyword.operator.declaration.dw}
-    - {match: (\.), name: keyword.operator.dot.dw}
-    - {match: (\-\-|\+\+), name: keyword.operator.increment-decrement.dw}
-    - {match: (\-|\+|\*|\/|%), name: keyword.operator.arithmetic.dw}
-    - {match: (\+=|\-=|\*=|\/=), name: keyword.operator.arithmetic.assign.dw}
-    - {match: \b(not|and|or)\b, name: keyword.operator.logical.dw}
-    - {match: (\.\.), name: keyword.operator.range.dw}
-    - {match: (;), name: punctuation.terminator.dw}
-  
+    - name: keyword.operator.comparison.dw
+      match: (==|!=|===|!==|<=|>=|<|>)
+    - name: keyword.operator.assignment.dw
+      match: (=)
+    - name: keyword.operator.declaration.dw
+      match: (:)
+    - name: keyword.operator.dot.dw
+      match: (\.)
+    - name: keyword.operator.increment-decrement.dw
+      match: (\-\-|\+\+)
+    - name: keyword.operator.arithmetic.dw
+      match: (\-|\+|\*|\/)
+    # - name: keyword.operator.arithmetic.assign.dw
+    #   match: (\+=|\-=|\*=|\/=)
+    - name: keyword.operator.logical.dw
+      match: \b(not|and|or)\b
+    - name: keyword.operator.allDescendant.dw
+      match: (\.\.\*)
+    - name: keyword.operator.all.dw
+      match: (\.\*)
+    - name: keyword.operator.range.dw
+      match: (\.\.)
+
+  match-block:
+    name: match-block.expr.dw
+    begin: \{
+    beginCaptures:
+      '0': {name: keyword.control.switch.dw}
+    end: (?=\})
+    patterns:
+    - include: '#case-clause'
+    - include: '#expressions'
+
+  match-statement:
+    name: match-statement.expr.dw
+    begin: (?<!\.|\$)\b(match\s*)(?=\{)
+    beginCaptures:
+      '0': {name: keyword.control.switch.dw}
+    end: \}
+    endCaptures:
+      '0': {name: keyword.control.switch.dw}
+      '1': {name: punctuation.definition.block.dw}
+    patterns:
+    - include: '#match-block'
+
+  ns-directive:
+    name: meta.directive.ns.dw
+    begin: (?<!\.|\$)\b(ns)\s+([[:alpha:]][[:alnum:]]*)\s+([^\n]*)(?!\$|\.)
+    beginCaptures:
+      '1': {name: keyword.other.dw}
+      '2': {name: entity.name.ns.dw}
+      '3': {name: meta.definition.ns.dw string.url.dw}
+    end: (?=\n)
+
+  object-literal:
+    name: meta.objectliteral.dw
+    begin: \{
+    beginCaptures:
+      '0': {name: punctuation.definition.block.dw}
+    end: \}
+    endCaptures:
+      '0': {name: punctuation.definition.block.dw}
+    patterns:
+    - include: '#object-member'
+
+
+  attr-literal:
+    name: meta.attributes.dw
+    begin: \@\(
+    beginCaptures:
+      '0': {name: keyword.operator.attributes.dw}
+    end: \)
+    endCaptures:
+      '0': {name: keyword.operator.attributes.dw}
+    patterns:
+    - include: '#object-member'
+
+  object-member:
+    patterns:
+    - include: '#comments'
+    - include: '#paren-expression'
+    - name: meta.object.member.dw meta.object-literal.key.dw
+      begin: (?=[\'\"\`])
+      end: (?=:)
+      patterns:
+      - include: '#strings'
+    - name: meta.object.member.dw
+      match: \b([[:alpha:]][[:alnum:]]+#)
+      captures:
+        '0': {name: entity.name.ns.dw}
+    - name: meta.object.member.dw
+      end: (?=,|\}|\))
+      match: (?:[_$[:alpha:]][_$[:alnum:]]*)\s*
+      captures:
+        '0': {name: meta.object-literal.key.dw}
+    - include: '#attr-literal'
+    - include: '#object-member-body'
+    - include: '#punctuation-comma'
+
+  object-member-body:
+    name: meta.object.member.dw
+    begin: ':'
+    beginCaptures:
+      '0': {name: meta.object-literal.key.dw punctuation.separator.key-value.dw}
+    end: (?=,|\}|\))
+    patterns:
+    - include: '#expressions'
+
+  output-directive:
+    name: meta.directive.ns.dw
+    begin: (?<!\.|\$)\b(output)\s+([^\n{\s]*)(?!\$|\.)
+    beginCaptures:
+      '1': {name: keyword.other.dw}
+      '2': {name: string.mime.dw}
+    end: (?=\n)
+
   parameters:
     patterns:
     - begin: (:)
@@ -157,156 +277,169 @@ repository:
         '1': {name: keyword.operator.declaration.dw}
       end: (?=,|\)|=)
       patterns:
-      - {include: '#types'}
+      - include: '#types'
     - begin: (=)
       beginCaptures:
         '1': {name: keyword.operator.declaration.dw}
       end: (?=,|\))
       patterns:
-      - {include: '#expressions'}
-    - {include: '#keywords'}
-    - {match: \w+, name: variable.parameter.function.dw}
+      - include: '#expressions'
+    - include: '#keywords'
+    - name: variable.parameter.function.dw
+      match: \w+
 
+  paren-expression:
+    begin: \(
+    end: \)
+    patterns:
+    - include: '#expressions'
 
-  dw-directive:
-    name: meta.directive.ns.dw
-    begin: (?<!\.|\$)(%dw)\s+([0-9]\.[0-9])(?!\$|\.)
-    beginCaptures:
-      '1': { name: comment.dw }
-      '2': { name: comment.dw }
-    end: (?=\n)
-
-  ns-directive:
-    name: meta.directive.ns.dw
-    begin: (?<!\.|\$)\b(ns)\s+([[:alpha:]][[:alnum:]]*)\s+([^\n]*)(?!\$|\.)
-    beginCaptures:
-      '1': { name: storage.type.ns.dw }
-      '2': { name: entity.name.ns.dw }
-      '3': { name: meta.definition.ns.dw string.url.dw }
-    end: (?=\n)
-
-
-  input-directive:
-    name: meta.directive.ns.dw
-    begin: (?<!\.|\$)\b(input)\s+([[:alpha:]][[:alnum:]]*)\s+([^\n]*)(?!\$|\.)
-    beginCaptures:
-      '1': { name: storage.type.ns.dw }
-      '2': { name: entity.name.ns.dw }
-      '3': { name: meta.definition.ns.dw string.mime.dw }
-    end: (?=\n)
-
-
-  output-directive:
-    name: meta.directive.ns.dw
-    begin: (?<!\.|\$)\b(output)\s+([[:alpha:]][[:alnum:]]*)(?!\$|\.)
-    beginCaptures:
-      '1': { name: storage.type.ns.dw }
-      '2': { name: meta.definition.ns.dw variable.other.ns.dw }
-    end: (?=\n)
+  punctuation-comma:
+    name: punctuation.separator.comma.dw
+    match: ','
 
   statements:
     patterns:
-    - {include: '#namespaces'}
-    - {include: '#typedefs'}
-    - {include: '#functions'}
-    - {include: '#variables'}
-    - {include: '#ns-directive'}
-    - {include: '#input-directive'}
-    - {include: '#output-directive'}
-    - {include: '#expressions'}
-
-  template-substitution-element:
-    name: meta.template.expression.dw
-    begin: \$\(
-    beginCaptures:
-      '0': { name: keyword.other.dw }
-    end: \)
-    endCaptures:
-      '0': { name: keyword.other.dw }
-    patterns:
-      - include: '#expressions'
+    - include: '#typedefs'
+    - include: '#functions'
+    - include: '#variables'
+    - include: '#ns-directive'
+    - include: '#input-directive'
+    - include: '#output-directive'
+    - include: '#expressions'
 
   strings:
     patterns:
-    - begin: '"'
+    - name: string.quoted.double.dw
+      begin: '"'
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.dw}
       end: '"'
       endCaptures:
         '0': {name: punctuation.definition.string.end.dw}
-      name: string.quoted.double.dw
       patterns:
       - include: '#template-substitution-element'
-      - {match: \\., name: constant.character.escape.dw}
-    - begin: "'"
+      - name: constant.character.escape.dw
+        match: \\.
+    - name: string.quoted.single.dw
+      begin: ''''
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.dw}
-      end: "'"
+      end: ''''
       endCaptures:
         '0': {name: punctuation.definition.string.end.dw}
-      name: string.quoted.single.dw
       patterns:
       - include: '#template-substitution-element'
-      - {match: \\., name: constant.character.escape.dw}
-    - begin: '`'
+      - match: \\.
+        name: constant.character.escape.dw
+    - name: string.quoted.single.dw
+      begin: '`'
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.dw}
       end: '`'
       endCaptures:
         '0': {name: punctuation.definition.string.end.dw}
-      name: string.quoted.single.dw
       patterns:
       - include: '#template-substitution-element'
-      - {match: \\., name: constant.character.escape.dw}
+      - match: \\.
+        name: constant.character.escape.dw
+
+  template-substitution-element:
+    name: meta.template.expression.dw
+    begin: \$\(
+    beginCaptures:
+      '0': {name: keyword.other.dw}
+    end: \)
+    endCaptures:
+      '0': {name: keyword.other.dw}
+    patterns:
+    - include: '#expressions'
+
   typedefs:
     begin: (?=\s*(?:type))
-    end: (?=$)
+    end: (\}|(?=$))
     patterns:
-    - {match: \b(type)\b, name: keyword.other.dw}
+    - name: keyword.other.dw
+      match: \=
+    - include: '#types'
+    - name: keyword.other.dw
+      match: \b(type)\b
     - begin: <
       end: '>'
       patterns:
-      - {include: '#generics'}
-    - match: '='
-      name: keyword.other.dw
-    - {include: '#types'}
+      - include: '#generics'
+    
   types:
     patterns:
-    - {match: \b(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)\b,
-      name: storage.type.buildin.dw}
+    - name: entity.name.type.buildin.dw
+      match: \b(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)\b
     - begin: \b(Array|Type)<\b
       beginCaptures:
-        '1': {name: storage.type.buildin.collection.dw}
+        '1': {name: entity.name.type.collection.dw}
       end: '>'
       patterns:
-      - {include: '#types'}
-    - match: \b([A-Z][a-zA-Z0-9_]*)
-      name: storage.type.dw
+      - include: '#types'
+    - name: entity.name.type.dw
+      match: \b([A-Z][a-zA-Z0-9_]*)
     - begin: \w+<
       end: '>'
       patterns:
-      - {include: '#types'}
-      - {include: '#keywords'}
+      - include: '#types'
+      - include: '#punctuation-comma'
+      - include: '#comments'
+      - include: '#keywords'
     - begin: \(
       beginCaptures:
         '1': {name: keyword.operator.tuple.dw}
       end: (\)\s*=>)
       patterns:
-      - {include: '#parameters'}
-
+      - include: '#parameters'
     - begin: \{
       end: \}
       patterns:
-      - {include: '#statements'}
+      - include: '#object-member-type'
+      - include: '#punctuation-comma'
     - begin: \(
       end: \)
       patterns:
-      - {include: '#types'}
-    
-    - {match: (&), name: keyword.operator.declaration.dw}
+      - include: '#types'
+    - name: keyword.operator.declaration.dw
+      match: (&)
+    - name: keyword.operator.declaration.dw
+      match: '<:'
+
+  object-member-type:
+    patterns:
+    - include: '#comments'
+    - match: ([a-zA-Z0-9]+#)
+      name: entity.namespace.dw
+    - match: ([a-zA-Z][a-zA-Z0-9]*)
+      name: meta.object.member.dw
+    - include: '#strings'
+    - match: '\?'
+      name: keyword.operator.optional.dw
+    - begin: (\@\()
+      beginCaptures:
+        '1': {name: keyword.operator.attributes.dw}
+      end: (\))
+      endCaptures:
+        '1': {name: keyword.operator.attributes.dw}
+      patterns:
+      - include: '#object-member-type' 
+      - include: '#punctuation-comma'
+    - begin: (:)
+      beginCaptures:
+        '1': {name: keyword.operator.declaration.dw}
+      end: (?=,|}|\))
+      patterns:
+      - include: '#types'
+
+
+
+
   variables:
     begin: (?=\s*(?:var))
-    end: (?=:|=|$)
+    end: (?==|$)
     patterns:
     - begin: \b(var)\b
       beginCaptures:
@@ -316,112 +449,119 @@ repository:
       - begin: <
         end: '>'
         patterns:
-        - {include: '#generics'}
-      - captures:
+        - include: '#generics'
+      - match: ([\.<\?>\w]+\.)?(\w+)
+        captures:
           '2': {name: entity.name.variable.dw}
-        match: ([\.<\?>\w]+\.)?(\w+)
     - begin: (:)
       beginCaptures:
         '1': {name: keyword.operator.declaration.dw}
       end: (?==|$)
       patterns:
-      - {include: '#types'}
-      
+      - include: '#comments'
+      - include: '#types'
     - begin: (=)
       beginCaptures:
         '1': {name: keyword.operator.assignment.dw}
       end: (?=$)
       patterns:
-      - {include: '#expressions'}
-      
+      - include: '#expressions'
 
-
-  match-block:
-    name: match-block.expr.dw
-    begin: \{
+  array-literal:
+    name: meta.array.literal.dw
+    begin: \[
     beginCaptures:
-      '0': { name: keyword.control.switch.dw }
-    end: (?=\})
-    patterns:
-    - include: '#case-clause'
-    - include: '#expressions'
-
-  case-clause:
-    name: case-clause.expr.dw
-    begin: (?<!\.|\$)\b(case|else(?=\s*->))\b(?!\$|\.)
-    beginCaptures:
-      '1': { name: keyword.control.switch.dw }
-    end: \-\>
+      '0': { name: meta.brace.square.dw }
+    end: \]
     endCaptures:
-      '0': { name: keyword.control.switch.dw }
+      '0': { name: meta.brace.square.dw }
     patterns:
-    - begin: (?<!\.|\$)\b(is)\s+
-      beginCaptures:
-        '1': { name: keyword.control.as.dw }
-      end: (?=\-\>)
-      patterns:
-      - include: '#types'
     - include: '#expressions'
-
-  match-statement:
-    name: match-statement.expr.dw
-    begin: (?<!\.|\$)\b(match\s*)(?=\{)
-    beginCaptures:
-      '0': {name: keyword.control.switch.dw }
-    end: \}
-    endCaptures: 
-      '0': {name: keyword.control.switch.dw }      
-      '1': {name: punctuation.definition.block.dw}      
-    patterns:
-    - include: '#match-block'
-
-
-  object-literal:
-    name: meta.objectliteral.dw
-    begin: \{
-    beginCaptures:
-      '0': { name: punctuation.definition.block.dw }
-    end: \}
-    endCaptures:
-      '0': { name: punctuation.definition.block.dw }
-    patterns:
-    - include: '#object-member'
-
-  object-member:
-    patterns:
-    - include: '#comment'
-    - include: '#paren-expression'
-    - name: meta.object.member.dw meta.object-literal.key.dw
-      begin: (?=[\'\"])
-      end: (?=:)
-      patterns:
-      - include: '#strings'
-
-    - name: meta.object.member.dw
-      match: \b([[:alpha:]][[:alnum:]]+#)
-      captures:
-        '0': { name: entity.name.ns.dw }
-
-    - name: meta.object.member.dw
-      match: (?![_$[:alpha:]])([[:digit:]]+)\s*(?=:)
-      captures:
-        '0': { name: meta.object-literal.key.dw }
-        '1': { name: constant.numeric.decimal.dw }
-
-    - name: meta.object.member.dw
-      match: (?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
-      captures:
-        '0': { name: meta.object-literal.key.dw }
-      end: (?=,|\})
-    - include: '#object-member-body'
     - include: '#punctuation-comma'
 
-  object-member-body:
-    name:  meta.object.member.dw
-    begin: ':'
-    beginCaptures:
-      '0': { name: meta.object-literal.key.dw punctuation.separator.key-value.dw }
-    end: (?=,|\})
+  regex:
     patterns:
-    - include: '#expressions'
+    - name: string.regexp.dw
+      begin: (?<=[=(:,\[?+!]|replace|match|scan|matches|contains|---|case|->|and|or|\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])(?!\s*[a-zA-Z0-9_$]))
+      beginCaptures:
+        '1': {name: punctuation.definition.string.begin.dw}
+      end: (/)
+      endCaptures:
+        '1': {name: punctuation.definition.string.end.dw}
+      patterns:
+      - include: '#regexp'
+    # Check if complete regexp syntax
+    - name: string.regexp.dw
+      begin: (?<![_$[:alnum:])])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])(?!\s*[a-zA-Z0-9_$]))
+      beginCaptures:
+        '0': {name: punctuation.definition.string.begin.dw}
+      end: (/)
+      endCaptures:
+        '1': {name: punctuation.definition.string.end.dw}
+      patterns:
+      - include: '#regexp'
 
+  # regexp syntax is taken from https://github.com/atom/language-javascript/
+  regexp:
+    patterns:
+    - name: keyword.control.anchor.regexp
+      match: \\[bB]|\^|\$
+    - name: keyword.other.back-reference.regexp
+      match: \\[1-9]\d*
+    - name: keyword.operator.quantifier.regexp
+      match: '[?+*]|\{(\d+,\d+|\d+,|,\d+|\d+)\}\??'
+    - name: keyword.operator.or.regexp
+      match: \|
+    - name: meta.group.assertion.regexp
+      begin: (\()((\?=)|(\?!))
+      beginCaptures:
+        '1': {name: punctuation.definition.group.regexp}
+        '2': {name: punctuation.definition.group.assertion.regexp}
+        '3': {name: meta.assertion.look-ahead.regexp}
+        '4': {name: meta.assertion.negative-look-ahead.regexp}
+      end: (\))
+      endCaptures:
+        '1': {name: punctuation.definition.group.regexp}
+      patterns:
+      - include: '#regexp'
+    - name: meta.group.regexp
+      begin: \((\?:)?
+      beginCaptures:
+        '0': {name: punctuation.definition.group.regexp}
+        '1': {name: punctuation.definition.group.capture.regexp}
+      end: \)
+      endCaptures:
+        '0': {name: punctuation.definition.group.regexp}
+      patterns:
+      - include: '#regexp'
+    - name: constant.other.character-class.set.regexp
+      begin: (\[)(\^)?
+      beginCaptures:
+        '1': {name: punctuation.definition.character-class.regexp}
+        '2': {name: keyword.operator.negation.regexp}
+      end: (\])
+      endCaptures:
+        '1': {name: punctuation.definition.character-class.regexp}
+      patterns:
+      - name: constant.other.character-class.range.regexp
+        match: (?:.|(\\(?:[0-7]{3}|x\h\h|u\h\h\h\h))|(\\c[A-Z])|(\\.))\-(?:[^\]\\]|(\\(?:[0-7]{3}|x\h\h|u\h\h\h\h))|(\\c[A-Z])|(\\.))
+        captures:
+          '1': {name: constant.character.numeric.regexp}
+          '2': {name: constant.character.control.regexp}
+          '3': {name: constant.character.escape.backslash.regexp}
+          '4': {name: constant.character.numeric.regexp}
+          '5': {name: constant.character.control.regexp}
+          '6': {name: constant.character.escape.backslash.regexp}
+      - include: '#regex-character-class'
+    - include: '#regex-character-class'
+
+  regex-character-class:
+    patterns:
+    - name: constant.other.character-class.regexp
+      match: \\[wWsSdDtrnvf]|\.
+    - name: constant.character.numeric.regexp
+      match: \\([0-7]{3}|x\h\h|u\h\h\h\h)
+    - name: constant.character.control.regexp
+      match: \\c[A-Z]
+    - name: constant.character.escape.backslash.regexp
+      match: \\.
