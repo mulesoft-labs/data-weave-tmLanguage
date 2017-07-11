@@ -26,6 +26,12 @@
 			<key>include</key>
 			<string>#statements</string>
 		</dict>
+		<dict>
+			<key>match</key>
+			<string>([^\s])</string>
+			<key>name</key>
+			<string>invalid</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -150,6 +156,28 @@
 				</dict>
 			</array>
 		</dict>
+		<key>cast</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;!\.|\$)\b(as|is)\s+</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.as.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=$|^|[;,:})\]\s])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#types</string>
+				</dict>
+			</array>
+		</dict>
 		<key>comments</key>
 		<dict>
 			<key>patterns</key>
@@ -231,6 +259,8 @@
 		</dict>
 		<key>expressions</key>
 		<dict>
+			<key>name</key>
+			<string>expression</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -255,6 +285,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#using-statement</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#regex</string>
 				</dict>
 				<dict>
@@ -268,6 +302,34 @@
 				<dict>
 					<key>include</key>
 					<string>#array-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#cast</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector</string>
+				</dict>
+			</array>
+		</dict>
+		<key>function_call</key>
+		<dict>
+			<key>begin</key>
+			<string>\s*\(</string>
+			<key>end</key>
+			<string>\s*\)</string>
+			<key>name</key>
+			<string>function_call</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#punctuation-comma</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expressions</string>
 				</dict>
 			</array>
 		</dict>
@@ -458,7 +520,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.ns.dw</string>
+					<string>variable.language.dw</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -519,29 +581,8 @@
 					<string>keyword.control.dw</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(?&lt;!\.|\$)\b(as|is)\s+</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.as.dw</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=$|^|[;,:})\]])</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#types</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
 					<key>match</key>
-					<string>(==|!=|===|!==|&lt;=|&gt;=|&lt;|&gt;)</string>
+					<string>(~=|==|!=|===|!==|&lt;=|&gt;=|&lt;|&gt;)</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.dw</string>
 				</dict>
@@ -579,7 +620,7 @@
 					<key>match</key>
 					<string>\b(not|and|or)\b</string>
 					<key>name</key>
-					<string>keyword.operator.logical.dw</string>
+					<string>keyword.other.dw</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -680,7 +721,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.ns.dw</string>
+					<string>variable.language.dw</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -739,6 +780,27 @@
 				</dict>
 				<dict>
 					<key>begin</key>
+					<string>\s+if\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.dw</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=,|})</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expressions</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>(?=[\'\"\`])</string>
 					<key>end</key>
 					<string>(?=:)</string>
@@ -758,7 +820,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.ns.dw</string>
+							<string>variable.language.dw</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -832,7 +894,13 @@
 					<key>match</key>
 					<string>([a-zA-Z0-9]+#)</string>
 					<key>name</key>
-					<string>entity.namespace.dw</string>
+					<string>variable.language.dw</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\(\s*([a-zA-Z][a-zA-Z0-9]*)\s*\)</string>
+					<key>name</key>
+					<string>entity.name.type.dw</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -903,6 +971,12 @@
 							<string>#types</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>([^\s])</string>
+					<key>name</key>
+					<string>invalid</string>
 				</dict>
 			</array>
 		</dict>
@@ -1006,6 +1080,91 @@
 			<string>,</string>
 			<key>name</key>
 			<string>punctuation.separator.comma.dw</string>
+		</dict>
+		<key>qstring-double</key>
+		<dict>
+			<key>begin</key>
+			<string>"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.dw punctuation.definition.string.begin.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>"</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.dw punctuation.definition.string.end.dw</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#template-substitution-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-character-escape</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>([^"])</string>
+					<key>name</key>
+					<string>string.quoted.double.dw</string>
+				</dict>
+			</array>
+		</dict>
+		<key>qstring-single</key>
+		<dict>
+			<key>begin</key>
+			<string>'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.dw punctuation.definition.string.begin.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\')|((?:[^\\\n])$)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.dw punctuation.definition.string.end.dw</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.newline.dw</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#template-substitution-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-character-escape</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>([^'])</string>
+					<key>name</key>
+					<string>string.quoted.single.dw</string>
+				</dict>
+			</array>
 		</dict>
 		<key>regex</key>
 		<dict>
@@ -1296,6 +1455,121 @@
 				</dict>
 			</array>
 		</dict>
+		<key>selector</key>
+		<dict>
+			<key>begin</key>
+			<string>((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*)|(\$)+)\s*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.reference.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=(?:\b(if|and|or|ns|input|output|type|is|as)\b)|[=~/+\-*,})\n\]'"`|{]|$)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#selectors</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#function_call</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#match-statement</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#using-statement</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?:(\+\+|\-\-|[A-Za-z])([a-zA-Z0-9_]*)(?=\s+))</string>
+					<key>name</key>
+					<string>keyword.other.dw</string>
+				</dict>
+			</array>
+		</dict>
+		<key>selectors</key>
+		<dict>
+			<key>begin</key>
+			<string>(\.\.\*|\.\.|\.\*|\.\@|\.#|\.|\[|\:\:)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.selector.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=\s|,|\}|\)|\n|\]|\(|-|$)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.dw</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b([[:alpha:]][[:alnum:]]+#)</string>
+					<key>name</key>
+					<string>meta.object.member.dw</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>((?:[A-Za-z])([a-zA-Z0-9_]*)[?!]?|(\$)+)</string>
+					<key>name</key>
+					<string>meta.object.member.dw</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#strings</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\[\?|\[\^)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.dw</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\])</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.dw</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#strings</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#selectors</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>statements</key>
 		<dict>
 			<key>patterns</key>
@@ -1330,120 +1604,73 @@
 				</dict>
 			</array>
 		</dict>
+		<key>string-character-escape</key>
+		<dict>
+			<key>match</key>
+			<string>\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)</string>
+			<key>name</key>
+			<string>constant.character.escape.dw</string>
+		</dict>
 		<key>strings</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>"</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.dw</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>"</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.dw</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.quoted.double.dw</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#template-substitution-element</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\\.</string>
-							<key>name</key>
-							<string>constant.character.escape.dw</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#qstring-single</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>'</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.dw</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>'</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.dw</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.quoted.single.dw</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#template-substitution-element</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\\.</string>
-							<key>name</key>
-							<string>constant.character.escape.dw</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#qstring-double</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>`</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.dw</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>`</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.dw</string>
-						</dict>
-					</dict>
+					<key>include</key>
+					<string>#template</string>
+				</dict>
+			</array>
+		</dict>
+		<key>template</key>
+		<dict>
+			<key>begin</key>
+			<string>([_$[:alpha:]][_$[:alnum:]]*)?(`)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
 					<key>name</key>
-					<string>string.quoted.single.dw</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#template-substitution-element</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\\.</string>
-							<key>name</key>
-							<string>constant.character.escape.dw</string>
-						</dict>
-					</array>
+					<string>entity.name.function.tagged-template.dw</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>string.template.dw punctuation.definition.string.template.begin.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>`</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>string.template.dw punctuation.definition.string.template.end.dw</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#template-substitution-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-character-escape</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>([^`])</string>
+					<key>name</key>
+					<string>string.template.dw</string>
 				</dict>
 			</array>
 		</dict>
@@ -1523,6 +1750,10 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)\b</string>
 					<key>name</key>
@@ -1530,7 +1761,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\b(Array|Type)&lt;\b</string>
+					<string>\b(Array|Type)\s*&lt;\b</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1543,6 +1774,12 @@
 					<string>&gt;</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>invalid</string>
+						</dict>
 						<dict>
 							<key>include</key>
 							<string>#types</string>
@@ -1557,7 +1794,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\w+&lt;</string>
+					<string>&lt;</string>
 					<key>end</key>
 					<string>&gt;</string>
 					<key>patterns</key>
@@ -1610,11 +1847,11 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#object-member-type</string>
+							<string>#punctuation-comma</string>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#punctuation-comma</string>
+							<string>#object-member-type</string>
 						</dict>
 					</array>
 				</dict>
@@ -1642,6 +1879,80 @@
 					<string>&lt;:</string>
 					<key>name</key>
 					<string>keyword.operator.declaration.dw</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(var|fun|ns)\b</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(input|output|var|ns|import|try|catch|throw|do|for|yield|enum|private|async)\b</string>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(if|else|while|for|do|using|unless|default)\b</string>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(~=|==|!=|===|!==|&lt;=|&gt;=|&lt;|&gt;|\$+)</string>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(true|false|null)\b</string>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+			</array>
+		</dict>
+		<key>using-statement</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;!\.|\$)\b(using\s*)\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.using.dw</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>using-statement.expr.dw</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(?=\s*=)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.variable.dw</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\s*=)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dw</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expressions</string>
 				</dict>
 			</array>
 		</dict>

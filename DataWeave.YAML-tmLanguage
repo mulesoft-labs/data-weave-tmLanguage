@@ -9,8 +9,65 @@ patterns:
 - include: '#imports'
 - include: '#dw-directive'
 - include: '#statements'
+- match: ([^\s])
+  name: invalid
 
 repository:
+
+  selectors:
+    begin: (\.\.\*|\.\.|\.\*|\.\@|\.#|\.|\[|\:\:)
+    beginCaptures:
+      '1': {name: keyword.operator.selector.dw}
+    end: (?=\s|,|\}|\)|\n|\]|\(|-|$)
+    patterns:
+      - name: meta.object.member.dw
+        match: \b([[:alpha:]][[:alnum:]]+#)
+        captures:
+          '0': {name: variable.language.dw}
+      - match: ((?:[A-Za-z])([a-zA-Z0-9_]*)[?!]?|(\$)+)
+        name: meta.object.member.dw
+      - include: '#strings'
+      - begin: (?=\[\?|\[\^)
+        beginCaptures:
+          '1': {name: keyword.other.dw}
+        end: (\])
+        endCaptures:
+          '1': {name: keyword.other.dw}
+        patterns:
+        - include: '#strings'
+        - include: '#selectors'
+      
+  function_call:
+    name: function_call
+    begin: \s*\(
+    end: \s*\)
+    patterns:
+    - include: '#punctuation-comma'
+    - include: '#expressions'
+
+
+
+  selector:
+    begin: ((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*)|(\$)+)\s*
+    beginCaptures:
+      '1': {name: variable.reference.dw}
+    end: (?=(?:\b(if|and|or|ns|input|output|type|is|as)\b)|[=~/+\-*,})\n\]'"`|{]|$)
+    patterns:
+      - include: '#selectors'
+      - include: '#function_call'
+      - include: '#match-statement'
+      - include: '#using-statement'
+      - name: keyword.other.dw
+        match: (?:(\+\+|\-\-|[A-Za-z])([a-zA-Z0-9_]*)(?=\s+))
+
+  cast:
+    begin: (?<!\.|\$)\b(as|is)\s+
+    beginCaptures:
+      '1': {name: keyword.control.as.dw}
+    end: (?=$|^|[;,:})\]\s])
+    patterns:
+    - include: '#types'
+
   case-clause:
     name: case-clause.expr.dw
     begin: (?<!\.|\$)\b(case|else(?=\s*->))\b(?!\$|\.)
@@ -56,16 +113,21 @@ repository:
     end: (?=\n)
 
   expressions:
+    name: expression
     patterns:
     - include: '#paren-expression'
     - include: '#strings'
     - include: '#constants'
     - include: '#comments'
     - include: '#match-statement'
+    - include: '#using-statement'
     - include: '#regex'
     - include: '#keywords'
     - include: '#object-literal'
     - include: '#array-literal'
+    - include: '#cast'
+    - include: '#selector'
+
 
   functions:
     begin: (?=\s*(?:fun))
@@ -127,7 +189,7 @@ repository:
     end: (?=\n)
     beginCaptures:
       '1': {name: keyword.other.dw}
-      '2': {name: entity.name.ns.dw}
+      '2': {name: variable.language.dw}
     patterns:
     - begin: (\:\s*)
       beginCaptures:
@@ -148,14 +210,8 @@ repository:
       match: \b(input|output|type|var|ns|import|try|catch|throw|do|for|yield|enum|private|async)\b
     - name: keyword.control.dw
       match: \b(if|else|while|for|do|using|unless|default)\b
-    - begin: (?<!\.|\$)\b(as|is)\s+
-      beginCaptures:
-        '1': {name: keyword.control.as.dw}
-      end: (?=$|^|[;,:})\]])
-      patterns:
-      - include: '#types'
     - name: keyword.operator.comparison.dw
-      match: (==|!=|===|!==|<=|>=|<|>)
+      match: (~=|==|!=|===|!==|<=|>=|<|>)
     - name: keyword.operator.assignment.dw
       match: (=)
     - name: keyword.operator.declaration.dw
@@ -168,7 +224,7 @@ repository:
       match: (\-|\+|\*|\/)
     # - name: keyword.operator.arithmetic.assign.dw
     #   match: (\+=|\-=|\*=|\/=)
-    - name: keyword.operator.logical.dw
+    - name: keyword.other.dw
       match: \b(not|and|or)\b
     - name: keyword.operator.allDescendant.dw
       match: (\.\.\*)
@@ -199,12 +255,28 @@ repository:
     patterns:
     - include: '#match-block'
 
+  using-statement:
+    name: using-statement.expr.dw
+    begin: (?<!\.|\$)\b(using\s*)\(
+    beginCaptures:
+      '1': {name: keyword.control.using.dw}
+    end: \)
+    patterns:
+    - begin: ((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(?=\s*=)
+      beginCaptures:
+        '1': {name: entity.name.variable.dw}
+      end: (\s*=)
+      endCaptures:
+        '0': {name: keyword.operator.dw}
+    - include: '#expressions'
+    
+
   ns-directive:
     name: meta.directive.ns.dw
     begin: (?<!\.|\$)\b(ns)\s+([[:alpha:]][[:alnum:]]*)\s+([^\n]*)(?!\$|\.)
     beginCaptures:
       '1': {name: keyword.other.dw}
-      '2': {name: entity.name.ns.dw}
+      '2': {name: variable.language.dw}
       '3': {name: meta.definition.ns.dw string.url.dw}
     end: (?=\n)
 
@@ -235,6 +307,12 @@ repository:
     patterns:
     - include: '#comments'
     - include: '#paren-expression'
+    - begin: \s+if\b
+      beginCaptures:
+        '0': {name: keyword.control.dw}
+      end: (?=,|})
+      patterns:
+      - include: '#expressions'
     - name: meta.object.member.dw meta.object-literal.key.dw
       begin: (?=[\'\"\`])
       end: (?=:)
@@ -243,7 +321,7 @@ repository:
     - name: meta.object.member.dw
       match: \b([[:alpha:]][[:alnum:]]+#)
       captures:
-        '0': {name: entity.name.ns.dw}
+        '0': {name: variable.language.dw}
     - name: meta.object.member.dw
       end: (?=,|\}|\))
       match: (?:[_$[:alpha:]][_$[:alnum:]]*)\s*
@@ -310,39 +388,54 @@ repository:
 
   strings:
     patterns:
-    - name: string.quoted.double.dw
-      begin: '"'
-      beginCaptures:
-        '0': {name: punctuation.definition.string.begin.dw}
-      end: '"'
-      endCaptures:
-        '0': {name: punctuation.definition.string.end.dw}
-      patterns:
-      - include: '#template-substitution-element'
-      - name: constant.character.escape.dw
-        match: \\.
-    - name: string.quoted.single.dw
-      begin: ''''
-      beginCaptures:
-        '0': {name: punctuation.definition.string.begin.dw}
-      end: ''''
-      endCaptures:
-        '0': {name: punctuation.definition.string.end.dw}
-      patterns:
-      - include: '#template-substitution-element'
-      - match: \\.
-        name: constant.character.escape.dw
-    - name: string.quoted.single.dw
-      begin: '`'
-      beginCaptures:
-        '0': {name: punctuation.definition.string.begin.dw}
-      end: '`'
-      endCaptures:
-        '0': {name: punctuation.definition.string.end.dw}
-      patterns:
-      - include: '#template-substitution-element'
-      - match: \\.
-        name: constant.character.escape.dw
+    - include: '#qstring-single'
+    - include: '#qstring-double'
+    - include: '#template'
+
+  template:
+    begin: '([_$[:alpha:]][_$[:alnum:]]*)?(`)'
+    beginCaptures:
+      '1': { name: entity.name.function.tagged-template.dw }
+      '2': { name: string.template.dw punctuation.definition.string.template.begin.dw }
+    end: '`'
+    endCaptures:
+      '0': { name: string.template.dw punctuation.definition.string.template.end.dw}
+    patterns:
+     - include: '#template-substitution-element'
+     - include: '#string-character-escape'
+     - match: ([^`])
+       name: string.template.dw
+
+  string-character-escape:
+    name: constant.character.escape.dw
+    match: \\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
+
+  qstring-double:
+    begin: '"'
+    beginCaptures:
+      '0': { name: string.quoted.double.dw punctuation.definition.string.begin.dw }
+    end: '"'
+    endCaptures:
+      '0': { name: string.quoted.double.dw punctuation.definition.string.end.dw }
+    patterns:
+    - include: '#template-substitution-element'
+    - include: '#string-character-escape'
+    - match: ([^"])
+      name: string.quoted.double.dw
+
+  qstring-single:
+    begin: "'"
+    beginCaptures:
+      '0': { name: string.quoted.single.dw punctuation.definition.string.begin.dw }
+    end: (\')|((?:[^\\\n])$)
+    endCaptures:
+      '1': { name: string.quoted.single.dw punctuation.definition.string.end.dw }
+      '2': { name: invalid.illegal.newline.dw }
+    patterns:
+    - include: '#template-substitution-element'
+    - include: '#string-character-escape'
+    - match: ([^'])
+      name: string.quoted.single.dw
 
   template-substitution-element:
     name: meta.template.expression.dw
@@ -371,17 +464,20 @@ repository:
     
   types:
     patterns:
+    - include: '#comments'
     - name: entity.name.type.buildin.dw
       match: \b(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)\b
-    - begin: \b(Array|Type)<\b
+    - begin: \b(Array|Type)\s*<\b
       beginCaptures:
         '1': {name: entity.name.type.collection.dw}
       end: '>'
       patterns:
+      - match: ','
+        name: invalid
       - include: '#types'
     - name: entity.name.type.dw
       match: \b([A-Z][a-zA-Z0-9_]*)
-    - begin: \w+<
+    - begin: <
       end: '>'
       patterns:
       - include: '#types'
@@ -397,8 +493,8 @@ repository:
     - begin: \{
       end: \}
       patterns:
-      - include: '#object-member-type'
       - include: '#punctuation-comma'
+      - include: '#object-member-type'
     - begin: \(
       end: \)
       patterns:
@@ -407,12 +503,24 @@ repository:
       match: (&)
     - name: keyword.operator.declaration.dw
       match: '<:'
+    - match: \b(var|fun|ns)\b
+    - name: invalid
+      match: \b(input|output|var|ns|import|try|catch|throw|do|for|yield|enum|private|async)\b
+    - name: invalid
+      match: \b(if|else|while|for|do|using|unless|default)\b
+    - name: invalid
+      match: (~=|==|!=|===|!==|<=|>=|<|>|\$+)
+    - name: invalid
+      match: \b(true|false|null)\b
 
   object-member-type:
     patterns:
     - include: '#comments'
+    
     - match: ([a-zA-Z0-9]+#)
-      name: entity.namespace.dw
+      name: variable.language.dw
+    - match: \(\s*([a-zA-Z][a-zA-Z0-9]*)\s*\)
+      name: entity.name.type.dw
     - match: ([a-zA-Z][a-zA-Z0-9]*)
       name: meta.object.member.dw
     - include: '#strings'
@@ -433,9 +541,9 @@ repository:
       end: (?=,|}|\))
       patterns:
       - include: '#types'
-
-
-
+    - match: ([^\s])
+      name: invalid
+    
 
   variables:
     begin: (?=\s*(?:var))
