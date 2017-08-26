@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "noImplicitAny": true
+  },
+  "exclude": [
+    "cases",
+    "baselines",
+    "generated",
+    "node_modules",
+    "cases-ts",
+    "baselines-ts"
+  ]
+}

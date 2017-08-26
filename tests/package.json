@@ -1,0 +1,20 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "test.ts",
+  "scripts": {
+    "pretest": "node ../build/build.js && tsc",
+    "test": "mocha --full-trace test.js"
+  },
+  "dependencies": {
+    "@types/chai": "latest",
+    "@types/mocha": "latest",
+    "@types/node": "latest",
+    "chai": "latest",
+    "mocha": "latest",
+    "typescript": "latest",
+    "vscode-textmate": "latest"
+  }
+}

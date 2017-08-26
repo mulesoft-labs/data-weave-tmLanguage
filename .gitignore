@@ -1,0 +1,8 @@
+build/node_modules
+build/typings/
+build/*.js
+tests/generated/*
+tests/node_modules
+tests/*-ts
+tests/typings/
+tests/*.js

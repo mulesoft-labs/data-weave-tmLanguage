@@ -1,0 +1,14 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+---
+name: DataWeave Indent
+uuid: 77966fa8-af34-4f1e-8535-e556d5063859
+scope: source.data-weave
+settings:
+  bracketIndentNextLinePattern: 
+  >
+    (?x)
+      ^ \s* \b(if|else)\b [^;]* $
+      | ^ \s* \b(for)\b .* $
+      | ^ \s* \b(using)\b .* $
+  decreaseIndentPattern: ^(.*\*/)?\s*\}.*$
+  increaseIndentPattern: ^.*\{[^}"']*$
