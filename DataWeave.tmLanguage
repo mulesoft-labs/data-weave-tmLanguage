@@ -694,21 +694,16 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>begin</key>
-            <string>((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(?=\s*=)</string>
-            <key>beginCaptures</key>
+            <key>match</key>
+            <string>((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(\s*=)</string>
+            <key>captures</key>
             <dict>
               <key>1</key>
               <dict>
                 <key>name</key>
                 <string>entity.name.variable.dw</string>
               </dict>
-            </dict>
-            <key>end</key>
-            <string>(\s*=)</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.dw</string>
@@ -841,7 +836,7 @@
         <key>name</key>
         <string>meta.selector.data-weave</string>
         <key>begin</key>
-        <string>(?&lt;![\[\(:+*/\-])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&amp;|\s*\.|\[|\:\:)</string>
+        <string>(?&lt;![\[\(:+*/\-])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&amp;|\s*\.|(?=\[)|\:\:)</string>
         <key>end</key>
         <string>(?=\s|,|\}|\)|\n|\]|\(|-|$)</string>
         <key>patterns</key>

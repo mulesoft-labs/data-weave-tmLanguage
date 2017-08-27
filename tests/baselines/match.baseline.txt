@@ -350,9 +350,9 @@ Grammar: DataWeave.tmLanguage
                                                                 ^
                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
                                                                  ^
-                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
+                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave constant.numeric.dw
                                                                   ^
-                                                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
                                                                    ^
                                                                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.separator.comma.dw
                                                                     ^
@@ -368,9 +368,11 @@ Grammar: DataWeave.tmLanguage
                                                                                   ^
                                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
                                                                                    ^
-                                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
-                                                                                    ^^
-                                                                                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave constant.numeric.dw
+                                                                                    ^
+                                                                                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
+                                                                                     ^
+                                                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                                                       ^
                                                                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
 >  },

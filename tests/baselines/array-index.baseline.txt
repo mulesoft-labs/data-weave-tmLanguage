@@ -1,0 +1,16 @@
+original file
+-----------------------------------
+array[a]
+-----------------------------------
+
+Grammar: DataWeave.tmLanguage
+-----------------------------------
+>array[a]
+ ^^^^^
+ variable.other.dw
+      ^
+      meta.selector.data-weave
+       ^
+       meta.selector.data-weave variable.other.dw
+        ^
+        meta.selector.data-weave

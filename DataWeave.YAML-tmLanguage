@@ -233,12 +233,10 @@ repository:
       '1': {name: keyword.control.using.dw}
     end: \)
     patterns:
-    - begin: ((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(?=\s*=)
-      beginCaptures:
+    - match: ((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(\s*=)
+      captures:
         '1': {name: entity.name.variable.dw}
-      end: (\s*=)
-      endCaptures:
-        '0': {name: keyword.operator.dw}
+        '2': {name: keyword.operator.dw}
     - include: '#expressions'
     
   if-statement:
@@ -287,7 +285,7 @@ repository:
 
   selectors:
     name: meta.selector.data-weave
-    begin: (?<![\[\(:+*/\-])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&|\s*\.|\[|\:\:)
+    begin: (?<![\[\(:+*/\-])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&|\s*\.|(?=\[)|\:\:)
     end: (?=\s|,|\}|\)|\n|\]|\(|-|$)
     patterns:
       - name: meta.object.member.dw
