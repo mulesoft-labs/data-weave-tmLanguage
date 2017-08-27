@@ -136,12 +136,8 @@ Grammar: DataWeave.tmLanguage
  meta.array.literal.dw
    ^
    meta.array.literal.dw variable.other.dw
-    ^
-    meta.array.literal.dw
-     ^^^
-     meta.array.literal.dw variable.other.dw
-        ^
-        meta.array.literal.dw
+    ^^^^^
+    meta.array.literal.dw support.function.dw
          ^
          meta.array.literal.dw variable.other.dw
           ^

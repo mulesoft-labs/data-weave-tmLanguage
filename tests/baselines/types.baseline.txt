@@ -366,7 +366,7 @@ Grammar: DataWeave.tmLanguage
                 ^
                 meta.directive.type.dw
                  ^^^
-                 meta.directive.type.dw variable.parameter.function.dw
+                 meta.directive.type.dw variable.parameter.dw
                     ^
                     meta.directive.type.dw keyword.operator.declaration.dw
                      ^
@@ -1019,7 +1019,7 @@ Grammar: DataWeave.tmLanguage
         ^
         meta.directive.type.dw
          ^^^
-         meta.directive.type.dw variable.parameter.function.dw
+         meta.directive.type.dw variable.parameter.dw
             ^
             meta.directive.type.dw keyword.operator.declaration.dw
              ^
@@ -1054,7 +1054,7 @@ Grammar: DataWeave.tmLanguage
         ^
         meta.directive.type.dw
          ^^^
-         meta.directive.type.dw variable.parameter.function.dw
+         meta.directive.type.dw variable.parameter.dw
             ^
             meta.directive.type.dw keyword.operator.declaration.dw
              ^
@@ -1064,7 +1064,7 @@ Grammar: DataWeave.tmLanguage
                     ^^
                     meta.directive.type.dw
                       ^^^^^
-                      meta.directive.type.dw variable.parameter.function.dw
+                      meta.directive.type.dw variable.parameter.dw
                            ^
                            meta.directive.type.dw keyword.operator.declaration.dw
                             ^
@@ -1257,45 +1257,37 @@ Grammar: DataWeave.tmLanguage
                              meta.directive.fun.dw
                               ^
                               meta.directive.fun.dw keyword.operator.assignment.dw
-                               ^
-                               meta.directive.fun.dw
                                 ^^^^^^
-                                meta.directive.fun.dw variable.other.dw
-                                      ^
-                                      meta.directive.fun.dw
+                                variable.other.dw
                                        ^
-                                       meta.directive.fun.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+                                       string.quoted.double.dw punctuation.definition.string.begin.dw
                                         ^
-                                        meta.directive.fun.dw string.quoted.double.dw
+                                        string.quoted.double.dw
                                          ^
-                                         meta.directive.fun.dw string.quoted.double.dw
+                                         string.quoted.double.dw
                                           ^
-                                          meta.directive.fun.dw string.quoted.double.dw
+                                          string.quoted.double.dw
                                            ^
-                                           meta.directive.fun.dw string.quoted.double.dw
+                                           string.quoted.double.dw
                                             ^
-                                            meta.directive.fun.dw string.quoted.double.dw
+                                            string.quoted.double.dw
                                              ^
-                                             meta.directive.fun.dw string.quoted.double.dw
+                                             string.quoted.double.dw
                                               ^
-                                              meta.directive.fun.dw string.quoted.double.dw
+                                              string.quoted.double.dw
                                                ^
-                                               meta.directive.fun.dw string.quoted.double.dw
+                                               string.quoted.double.dw
                                                 ^
-                                                meta.directive.fun.dw string.quoted.double.dw
+                                                string.quoted.double.dw
                                                  ^
-                                                 meta.directive.fun.dw string.quoted.double.dw
+                                                 string.quoted.double.dw
                                                   ^
-                                                  meta.directive.fun.dw string.quoted.double.dw
+                                                  string.quoted.double.dw
                                                    ^
-                                                   meta.directive.fun.dw string.quoted.double.dw
+                                                   string.quoted.double.dw
                                                     ^
-                                                    meta.directive.fun.dw string.quoted.double.dw punctuation.definition.string.end.dw
-                                                     ^
-                                                     meta.directive.fun.dw
+                                                    string.quoted.double.dw punctuation.definition.string.end.dw
 >
- ^
- meta.directive.fun.dw
 >type IListBuffer<T> = {
  ^^^^
  meta.directive.type.dw storage.type.dw
@@ -1367,7 +1359,7 @@ Grammar: DataWeave.tmLanguage
          ^
          meta.directive.type.dw
           ^^^^
-          meta.directive.type.dw variable.parameter.function.dw
+          meta.directive.type.dw variable.parameter.dw
               ^
               meta.directive.type.dw keyword.operator.declaration.dw
                ^
@@ -1394,7 +1386,7 @@ Grammar: DataWeave.tmLanguage
              ^
              meta.directive.type.dw
               ^^
-              meta.directive.type.dw variable.parameter.function.dw
+              meta.directive.type.dw variable.parameter.dw
                 ^
                 meta.directive.type.dw keyword.operator.declaration.dw
                  ^
@@ -1421,7 +1413,7 @@ Grammar: DataWeave.tmLanguage
           ^
           meta.directive.type.dw
            ^^
-           meta.directive.type.dw variable.parameter.function.dw
+           meta.directive.type.dw variable.parameter.dw
              ^
              meta.directive.type.dw keyword.operator.declaration.dw
               ^
@@ -1448,7 +1440,7 @@ Grammar: DataWeave.tmLanguage
           ^
           meta.directive.type.dw
            ^^
-           meta.directive.type.dw variable.parameter.function.dw
+           meta.directive.type.dw variable.parameter.dw
              ^
              meta.directive.type.dw keyword.operator.declaration.dw
               ^
@@ -1458,7 +1450,7 @@ Grammar: DataWeave.tmLanguage
                      ^^
                      meta.directive.type.dw
                        ^^^^
-                       meta.directive.type.dw variable.parameter.function.dw
+                       meta.directive.type.dw variable.parameter.dw
                            ^
                            meta.directive.type.dw keyword.operator.declaration.dw
                             ^
@@ -1561,51 +1553,43 @@ Grammar: DataWeave.tmLanguage
                                    meta.directive.fun.dw
                                     ^
                                     meta.directive.fun.dw keyword.operator.assignment.dw
-                                     ^
-                                     meta.directive.fun.dw
                                       ^^^^^^
-                                      meta.directive.fun.dw variable.other.dw
-                                            ^
-                                            meta.directive.fun.dw
+                                      variable.other.dw
                                              ^
-                                             meta.directive.fun.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+                                             string.quoted.double.dw punctuation.definition.string.begin.dw
                                               ^
-                                              meta.directive.fun.dw string.quoted.double.dw
+                                              string.quoted.double.dw
                                                ^
-                                               meta.directive.fun.dw string.quoted.double.dw
+                                               string.quoted.double.dw
                                                 ^
-                                                meta.directive.fun.dw string.quoted.double.dw
+                                                string.quoted.double.dw
                                                  ^
-                                                 meta.directive.fun.dw string.quoted.double.dw
+                                                 string.quoted.double.dw
                                                   ^
-                                                  meta.directive.fun.dw string.quoted.double.dw
+                                                  string.quoted.double.dw
                                                    ^
-                                                   meta.directive.fun.dw string.quoted.double.dw
+                                                   string.quoted.double.dw
                                                     ^
-                                                    meta.directive.fun.dw string.quoted.double.dw
+                                                    string.quoted.double.dw
                                                      ^
-                                                     meta.directive.fun.dw string.quoted.double.dw
+                                                     string.quoted.double.dw
                                                       ^
-                                                      meta.directive.fun.dw string.quoted.double.dw
+                                                      string.quoted.double.dw
                                                        ^
-                                                       meta.directive.fun.dw string.quoted.double.dw
+                                                       string.quoted.double.dw
                                                         ^
-                                                        meta.directive.fun.dw string.quoted.double.dw
+                                                        string.quoted.double.dw
                                                          ^
-                                                         meta.directive.fun.dw string.quoted.double.dw
+                                                         string.quoted.double.dw
                                                           ^
-                                                          meta.directive.fun.dw string.quoted.double.dw
+                                                          string.quoted.double.dw
                                                            ^
-                                                           meta.directive.fun.dw string.quoted.double.dw
+                                                           string.quoted.double.dw
                                                             ^
-                                                            meta.directive.fun.dw string.quoted.double.dw
+                                                            string.quoted.double.dw
                                                              ^
-                                                             meta.directive.fun.dw string.quoted.double.dw punctuation.definition.string.end.dw
-                                                              ^
-                                                              meta.directive.fun.dw
+                                                             string.quoted.double.dw punctuation.definition.string.end.dw
 >
- ^
- meta.directive.fun.dw
 >fun test(value:Null):Null = null
  ^^^
  meta.directive.fun.dw storage.type.dw
@@ -1616,7 +1600,7 @@ Grammar: DataWeave.tmLanguage
          ^
          meta.directive.fun.dw
           ^^^^^
-          meta.directive.fun.dw variable.parameter.function.dw
+          meta.directive.fun.dw variable.parameter.dw
                ^
                meta.directive.fun.dw keyword.operator.declaration.dw
                 ^^^^
@@ -1631,13 +1615,9 @@ Grammar: DataWeave.tmLanguage
                           meta.directive.fun.dw
                            ^
                            meta.directive.fun.dw keyword.operator.assignment.dw
-                            ^
-                            meta.directive.fun.dw
                              ^^^^
-                             meta.directive.fun.dw constant.language.dw
+                             constant.language.dw
 >
- ^
- meta.directive.fun.dw
 >fun test2(value:Null, callback:(Nothing,Nothing) -> Any):Null = null
  ^^^
  meta.directive.fun.dw storage.type.dw
@@ -1648,7 +1628,7 @@ Grammar: DataWeave.tmLanguage
           ^
           meta.directive.fun.dw
            ^^^^^
-           meta.directive.fun.dw variable.parameter.function.dw
+           meta.directive.fun.dw variable.parameter.dw
                 ^
                 meta.directive.fun.dw keyword.operator.declaration.dw
                  ^^^^
@@ -1656,7 +1636,7 @@ Grammar: DataWeave.tmLanguage
                      ^^
                      meta.directive.fun.dw
                        ^^^^^^^^
-                       meta.directive.fun.dw variable.parameter.function.dw
+                       meta.directive.fun.dw variable.parameter.dw
                                ^
                                meta.directive.fun.dw keyword.operator.declaration.dw
                                 ^
@@ -1683,13 +1663,9 @@ Grammar: DataWeave.tmLanguage
                                                               meta.directive.fun.dw
                                                                ^
                                                                meta.directive.fun.dw keyword.operator.assignment.dw
-                                                                ^
-                                                                meta.directive.fun.dw
                                                                  ^^^^
-                                                                 meta.directive.fun.dw constant.language.dw
+                                                                 constant.language.dw
 >
- ^
- meta.directive.fun.dw
 >fun toAccount(user: User) : Account = {
  ^^^
  meta.directive.fun.dw storage.type.dw
@@ -1700,7 +1676,7 @@ Grammar: DataWeave.tmLanguage
               ^
               meta.directive.fun.dw
                ^^^^
-               meta.directive.fun.dw variable.parameter.function.dw
+               meta.directive.fun.dw variable.parameter.dw
                    ^
                    meta.directive.fun.dw keyword.operator.declaration.dw
                     ^
@@ -1721,91 +1697,89 @@ Grammar: DataWeave.tmLanguage
                                     meta.directive.fun.dw
                                      ^
                                      meta.directive.fun.dw keyword.operator.assignment.dw
-                                      ^
-                                      meta.directive.fun.dw
                                        ^
-                                       meta.directive.fun.dw meta.objectliteral.dw punctuation.definition.block.dw
+                                       meta.objectliteral.dw punctuation.definition.block.dw
 >   email: "$(user.name).$(user.lastName)@mulesoft.com",
  ^^^
- meta.directive.fun.dw meta.objectliteral.dw
+ meta.objectliteral.dw
     ^^^^^
-    meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw
+    meta.objectliteral.dw meta.object.member.dw
          ^
-         meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+         meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
           ^
-          meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw
+          meta.objectliteral.dw meta.object.member.dw
            ^
-           meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+           meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
             ^^
-            meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
+            meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
               ^^^^
-              meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw variable.other.dw
+              meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw variable.other.dw
                   ^
-                  meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave
+                  meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave
                    ^^^^
-                   meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave meta.object.member.dw
+                   meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave meta.object.member.dw
                        ^
-                       meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
+                       meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
                         ^
-                        meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                        meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                          ^^
-                         meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
+                         meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
                            ^^^^
-                           meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw variable.other.dw
+                           meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw variable.other.dw
                                ^
-                               meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave
+                               meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave
                                 ^^^^^^^^
-                                meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave meta.object.member.dw
+                                meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave meta.object.member.dw
                                         ^
-                                        meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
+                                        meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
                                          ^
-                                         meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                         meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                           ^
-                                          meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                          meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                            ^
-                                           meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                           meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                             ^
-                                            meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                            meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                              ^
-                                             meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                             meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                               ^
-                                              meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                              meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                ^
-                                               meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                               meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                 ^
-                                                meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                                meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                  ^
-                                                 meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                                 meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                   ^
-                                                  meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                                  meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                    ^
-                                                   meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                                   meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                     ^
-                                                    meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                                    meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                      ^
-                                                     meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
+                                                     meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
                                                       ^
-                                                      meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
+                                                      meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
                                                        ^
-                                                       meta.directive.fun.dw meta.objectliteral.dw punctuation.separator.comma.dw
+                                                       meta.objectliteral.dw punctuation.separator.comma.dw
 >   id: user.name
  ^^^
- meta.directive.fun.dw meta.objectliteral.dw
+ meta.objectliteral.dw
     ^^
-    meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw
+    meta.objectliteral.dw meta.object.member.dw
       ^
-      meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+      meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
        ^
-       meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw
+       meta.objectliteral.dw meta.object.member.dw
         ^^^^
-        meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+        meta.objectliteral.dw meta.object.member.dw variable.other.dw
             ^
-            meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
+            meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
              ^^^^
-             meta.directive.fun.dw meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
+             meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
 >}
  ^
- meta.directive.fun.dw meta.objectliteral.dw punctuation.definition.block.dw
+ meta.objectliteral.dw punctuation.definition.block.dw
 >---
  ^^^
  keyword.operator.body-marker.dw

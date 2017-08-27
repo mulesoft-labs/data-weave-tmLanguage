@@ -62,14 +62,10 @@ Grammar: DataWeave.tmLanguage
          meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
           ^^^^^^
           meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
-                ^
-                meta.objectliteral.dw meta.object.member.dw
-                 ^^^
-                 meta.objectliteral.dw meta.object.member.dw variable.other.dw
-                    ^
-                    meta.objectliteral.dw meta.object.member.dw
+                ^^^^^
+                meta.objectliteral.dw meta.object.member.dw support.function.dw
                      ^
-                     meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                     meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                       ^
                       meta.objectliteral.dw meta.object.member.dw
                        ^^^^^
@@ -150,7 +146,7 @@ Grammar: DataWeave.tmLanguage
                                                                 ^
                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                                  ^
-                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                                                   ^
                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
                                                                    ^
@@ -168,7 +164,7 @@ Grammar: DataWeave.tmLanguage
                                                                             ^
                                                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                                              ^
-                                                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                                                               ^
                                                                               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
                                                                                ^
@@ -186,7 +182,7 @@ Grammar: DataWeave.tmLanguage
                                                                                           ^
                                                                                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                                                            ^
-                                                                                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                                                                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                                                                             ^
                                                                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
                                                                                              ^
@@ -257,7 +253,7 @@ Grammar: DataWeave.tmLanguage
                                                     ^
                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                      ^
-                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                                       ^
                                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
                                                        ^
@@ -275,7 +271,7 @@ Grammar: DataWeave.tmLanguage
                                                                   ^
                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                                    ^
-                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                                                     ^
                                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
                                                                      ^
@@ -444,7 +440,7 @@ Grammar: DataWeave.tmLanguage
                                 ^
                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                  ^
-                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                   ^
                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                    ^
@@ -479,7 +475,7 @@ Grammar: DataWeave.tmLanguage
                                 ^
                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                  ^
-                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                   ^
                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                    ^
@@ -611,7 +607,7 @@ Grammar: DataWeave.tmLanguage
                                  ^
                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                   ^
-                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                                    ^
                                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                     ^
@@ -642,7 +638,7 @@ Grammar: DataWeave.tmLanguage
                           ^
                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                            ^
-                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                             ^
                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                              ^

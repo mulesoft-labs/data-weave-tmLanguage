@@ -26,12 +26,10 @@ Grammar: DataWeave.tmLanguage
       meta.directive.var.dw
        ^
        meta.directive.var.dw keyword.operator.assignment.dw
-        ^
-        meta.directive.var.dw
          ^
-         meta.directive.var.dw meta.array.literal.dw meta.brace.square.dw
+         meta.array.literal.dw meta.brace.square.dw
           ^
-          meta.directive.var.dw meta.array.literal.dw meta.brace.square.dw
+          meta.array.literal.dw meta.brace.square.dw
 >var b = [1,2,3]
  ^^^
  meta.directive.var.dw storage.type.dw
@@ -43,22 +41,20 @@ Grammar: DataWeave.tmLanguage
       meta.directive.var.dw
        ^
        meta.directive.var.dw keyword.operator.assignment.dw
-        ^
-        meta.directive.var.dw
          ^
-         meta.directive.var.dw meta.array.literal.dw meta.brace.square.dw
+         meta.array.literal.dw meta.brace.square.dw
           ^
-          meta.directive.var.dw meta.array.literal.dw constant.numeric.dw
+          meta.array.literal.dw constant.numeric.dw
            ^
-           meta.directive.var.dw meta.array.literal.dw punctuation.separator.comma.dw
+           meta.array.literal.dw punctuation.separator.comma.dw
             ^
-            meta.directive.var.dw meta.array.literal.dw constant.numeric.dw
+            meta.array.literal.dw constant.numeric.dw
              ^
-             meta.directive.var.dw meta.array.literal.dw punctuation.separator.comma.dw
+             meta.array.literal.dw punctuation.separator.comma.dw
               ^
-              meta.directive.var.dw meta.array.literal.dw constant.numeric.dw
+              meta.array.literal.dw constant.numeric.dw
                ^
-               meta.directive.var.dw meta.array.literal.dw meta.brace.square.dw
+               meta.array.literal.dw meta.brace.square.dw
 >var c = [[null], false, []]
  ^^^
  meta.directive.var.dw storage.type.dw
@@ -70,29 +66,27 @@ Grammar: DataWeave.tmLanguage
       meta.directive.var.dw
        ^
        meta.directive.var.dw keyword.operator.assignment.dw
-        ^
-        meta.directive.var.dw
          ^
-         meta.directive.var.dw meta.array.literal.dw meta.brace.square.dw
+         meta.array.literal.dw meta.brace.square.dw
           ^
-          meta.directive.var.dw meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
+          meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
            ^^^^
-           meta.directive.var.dw meta.array.literal.dw meta.array.literal.dw constant.language.dw
+           meta.array.literal.dw meta.array.literal.dw constant.language.dw
                ^
-               meta.directive.var.dw meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
+               meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
                 ^
-                meta.directive.var.dw meta.array.literal.dw punctuation.separator.comma.dw
+                meta.array.literal.dw punctuation.separator.comma.dw
                  ^
-                 meta.directive.var.dw meta.array.literal.dw
+                 meta.array.literal.dw
                   ^^^^^
-                  meta.directive.var.dw meta.array.literal.dw constant.language.dw
+                  meta.array.literal.dw constant.language.dw
                        ^
-                       meta.directive.var.dw meta.array.literal.dw punctuation.separator.comma.dw
+                       meta.array.literal.dw punctuation.separator.comma.dw
                         ^
-                        meta.directive.var.dw meta.array.literal.dw
+                        meta.array.literal.dw
                          ^
-                         meta.directive.var.dw meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
+                         meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
                           ^
-                          meta.directive.var.dw meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
+                          meta.array.literal.dw meta.array.literal.dw meta.brace.square.dw
                            ^
-                           meta.directive.var.dw meta.array.literal.dw meta.brace.square.dw
+                           meta.array.literal.dw meta.brace.square.dw

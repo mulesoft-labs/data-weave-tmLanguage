@@ -6,14 +6,7 @@ uuid: ba6390ae-c50f-4dce-97f1-951dab8fc607
 
 patterns:
 - include: '#comments'
-- include: '#dw-directive'
-- include: '#import-directive'
-- include: '#type-directive'
-- include: '#fun-directive'
-- include: '#var-directive'
-- include: '#ns-directive'
-- include: '#input-directive'
-- include: '#output-directive'
+- include: '#directives'
 - match: (---)
   name: keyword.operator.body-marker.dw
 - include: '#expressions'
@@ -21,6 +14,17 @@ patterns:
   name: invalid
 
 repository:
+
+  directives: 
+    patterns:
+    - include: '#dw-directive'
+    - include: '#import-directive'
+    - include: '#type-directive'
+    - include: '#fun-directive'
+    - include: '#var-directive'
+    - include: '#ns-directive'
+    - include: '#input-directive'
+    - include: '#output-directive'
 
   function_call:
     name: function_call
@@ -141,8 +145,8 @@ repository:
     - include: '#object-member'
     - include: '#variable-reference'
     - include: '#selectors'
+    - include: '#directives'
     
-
 
   generics:
     patterns:
@@ -180,6 +184,12 @@ repository:
 
   keywords:
     patterns:
+    - name: support.function.dw
+      match: \s(match)\s(?!\{)
+    - name: support.function.dw
+      match: (?<!case)\s*(matches)\s
+    - name: support.function.dw
+      match: \s(abs|avg|ceil|contains|distinctBy|endsWith|filter|find|flatten|floor|groupBy|isBlank|isDecimal|isEmpty|isEven|isInteger|isLeapYear|isOdd|joinBy|log|lower|map|mapObject|max|maxBy|min|minBy|mod|native|now|orderBy|orderBy|pluck|pluck|pow|random|read|readUrl|reduce|reduce|replace|round|scan|sizeOf|splitBy|sqrt|startsWith|sum|to|trim|typeOf|unzip|upper|with|write|zip)\s
     - name: keyword.reserved.dw
       match: \b(throw|do|for|yield|enum|private|async)\b
     - name: keyword.control.dw
@@ -190,22 +200,10 @@ repository:
       match: (=)
     - name: keyword.operator.declaration.dw
       match: (:)
-    # - name: keyword.operator.dot.dw
-    #  match: (\.)
-    - name: keyword.operator.increment-decrement.dw
-      match: (\-\-|\+\+)
     - name: keyword.operator.arithmetic.dw
       match: (\-|\+|\*|\/)
-    # - name: keyword.operator.arithmetic.assign.dw
-    #   match: (\+=|\-=|\*=|\/=)
     - name: keyword.other.dw
       match: \b(not|and|or)\b
-    #- name: keyword.operator.allDescendant.dw
-    #  match: (\.\.\*)
-    #- name: keyword.operator.all.dw
-    #  match: (\.\*)
-    #- name: keyword.operator.range.dw
-    #  match: (\.\.)
 
   match-block:
     name: match-block.expr.dw
@@ -289,7 +287,7 @@ repository:
 
   selectors:
     name: meta.selector.data-weave
-    begin: (?<![\[\(:+*/\-)])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&|\s*\.|\[|\:\:)
+    begin: (?<![\[\(:+*/\-])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&|\s*\.|\[|\:\:)
     end: (?=\s|,|\}|\)|\n|\]|\(|-|$)
     patterns:
       - name: meta.object.member.dw
@@ -370,7 +368,6 @@ repository:
       end: (?=,|\))
       patterns:
       - include: '#expressions'
-    - include: '#keywords'
     - name: variable.parameter.dw
       match: \w+
 
@@ -473,7 +470,6 @@ repository:
       - include: '#types'
       - include: '#punctuation-comma'
       - include: '#comments'
-      - include: '#keywords'
     - begin: \(
       beginCaptures:
         '1': {name: keyword.operator.tuple.dw}
@@ -589,10 +585,12 @@ repository:
   var-directive:
     name: meta.directive.var.dw
     begin: (\s*(var)\s+([a-zA-Z][a-zA-Z0-9]*))
-    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s)
+    end: (=)
     beginCaptures:
       '2': {name: storage.type.dw}
       '3': {name: entity.name.variable.dw}
+    endCaptures:  
+      '0': {name: keyword.operator.assignment.dw}
     patterns:
     - begin: <
       end: '>'
@@ -605,20 +603,16 @@ repository:
       patterns:
       - include: '#comments'
       - include: '#types'
-    - begin: (=)
-      beginCaptures:
-        '1': {name: keyword.operator.assignment.dw}
-      end: (?=$)
-      patterns:
-      - include: '#expressions'
 
   fun-directive:
     name: meta.directive.fun.dw
     begin: (\s*(fun)\s+([a-zA-Z][a-zA-Z0-9]*))
-    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s)
+    end: (=)
     beginCaptures:
       '2': {name: storage.type.dw}
       '3': {name: entity.name.function.dw}
+    endCaptures:
+      '0': {name: keyword.operator.assignment.dw}
     patterns:
     - begin: <
       end: '>'
@@ -634,12 +628,6 @@ repository:
       end: (?==)
       patterns:
       - include: '#types'
-    - begin: (=)
-      beginCaptures:
-        '1': {name: keyword.operator.assignment.dw}
-      end: (?=$)
-      patterns:
-      - include: '#expressions'
 
 
   array-literal:

@@ -44,5 +44,5 @@ Grammar: DataWeave.tmLanguage
                                     ^
                                     keyword.operator.declaration.dw
                                       ^
-                                      variable.other.dw
+                                      variable.parameter.dw
 >

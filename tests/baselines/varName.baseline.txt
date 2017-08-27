@@ -30,10 +30,8 @@ Grammar: DataWeave.tmLanguage
          meta.directive.var.dw
           ^
           meta.directive.var.dw keyword.operator.assignment.dw
-           ^
-           meta.directive.var.dw
             ^
-            meta.directive.var.dw constant.numeric.dw
+            constant.numeric.dw
 >ns aa bb
  ^^
  meta.directive.ns.dw storage.type.dw
@@ -56,10 +54,8 @@ Grammar: DataWeave.tmLanguage
          meta.directive.var.dw
           ^
           meta.directive.var.dw keyword.operator.assignment.dw
-           ^
-           meta.directive.var.dw
             ^
-            meta.directive.var.dw constant.numeric.dw
+            constant.numeric.dw
 >var asd = null
  ^^^
  meta.directive.var.dw storage.type.dw
@@ -71,10 +67,8 @@ Grammar: DataWeave.tmLanguage
         meta.directive.var.dw
          ^
          meta.directive.var.dw keyword.operator.assignment.dw
-          ^
-          meta.directive.var.dw
            ^^^^
-           meta.directive.var.dw constant.language.dw
+           constant.language.dw
 >type XXXX = YYYY
  ^^^^
  meta.directive.type.dw storage.type.dw
@@ -123,18 +117,12 @@ Grammar: DataWeave.tmLanguage
                          meta.directive.fun.dw
                           ^
                           meta.directive.fun.dw keyword.operator.assignment.dw
-                           ^
-                           meta.directive.fun.dw
                             ^^^^
-                            meta.directive.fun.dw variable.other.dw
-                                ^
-                                meta.directive.fun.dw
+                            variable.other.dw
                                  ^^
-                                 meta.directive.fun.dw keyword.control.as.dw
-                                   ^
-                                   meta.directive.fun.dw
+                                 keyword.control.as.dw
                                     ^^^^^^
-                                    meta.directive.fun.dw support.class.dw
+                                    support.class.dw
 >---
  ^^^
  keyword.operator.body-marker.dw
