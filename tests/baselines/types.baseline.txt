@@ -1258,7 +1258,9 @@ Grammar: DataWeave.tmLanguage
                               ^
                               meta.directive.fun.dw keyword.operator.assignment.dw
                                 ^^^^^^
-                                variable.other.dw
+                                support.function.dw
+                                      ^
+                                      punctuation.expression.begin.dw
                                        ^
                                        string.quoted.double.dw punctuation.definition.string.begin.dw
                                         ^
@@ -1287,6 +1289,8 @@ Grammar: DataWeave.tmLanguage
                                                    string.quoted.double.dw
                                                     ^
                                                     string.quoted.double.dw punctuation.definition.string.end.dw
+                                                     ^
+                                                     punctuation.expression.end.dw
 >
 >type IListBuffer<T> = {
  ^^^^
@@ -1554,7 +1558,9 @@ Grammar: DataWeave.tmLanguage
                                     ^
                                     meta.directive.fun.dw keyword.operator.assignment.dw
                                       ^^^^^^
-                                      variable.other.dw
+                                      support.function.dw
+                                            ^
+                                            punctuation.expression.begin.dw
                                              ^
                                              string.quoted.double.dw punctuation.definition.string.begin.dw
                                               ^
@@ -1589,6 +1595,8 @@ Grammar: DataWeave.tmLanguage
                                                             string.quoted.double.dw
                                                              ^
                                                              string.quoted.double.dw punctuation.definition.string.end.dw
+                                                              ^
+                                                              punctuation.expression.end.dw
 >
 >fun test(value:Null):Null = null
  ^^^
@@ -1786,6 +1794,8 @@ Grammar: DataWeave.tmLanguage
 >toAccount({name: "Mariano", lastName: "Achaval"})
  ^^^^^^^^^
  variable.other.dw
+          ^
+          punctuation.expression.begin.dw
            ^
            meta.objectliteral.dw punctuation.definition.block.dw
             ^^^^
@@ -1842,3 +1852,5 @@ Grammar: DataWeave.tmLanguage
                                                meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
                                                 ^
                                                 meta.objectliteral.dw punctuation.definition.block.dw
+                                                 ^
+                                                 punctuation.expression.end.dw

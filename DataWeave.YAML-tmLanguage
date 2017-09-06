@@ -64,7 +64,7 @@ repository:
       end: (?=\-\>)
       patterns:
       - include: '#types'
-    - begin: (?<!\.|\$)\b(matches)\s+
+    - begin: (?<!\.|\$)\b(matches)\b
       beginCaptures:
         '1': {name: keyword.control.matches.dw}
       end: (?=\-\>)
@@ -187,9 +187,9 @@ repository:
     - name: support.function.dw
       match: \s(match)\s(?!\{)
     - name: support.function.dw
-      match: (?<!case)\s*(matches)\s
+      match: (?<!case)\s*\b(matches)\b
     - name: support.function.dw
-      match: \s(abs|avg|ceil|contains|distinctBy|endsWith|filter|find|flatten|floor|groupBy|isBlank|isDecimal|isEmpty|isEven|isInteger|isLeapYear|isOdd|joinBy|log|lower|map|mapObject|max|maxBy|min|minBy|mod|native|now|orderBy|orderBy|pluck|pluck|pow|random|read|readUrl|reduce|reduce|replace|round|scan|sizeOf|splitBy|sqrt|startsWith|sum|to|trim|typeOf|unzip|upper|with|write|zip)\s
+      match: \b(abs|avg|ceil|contains|distinctBy|endsWith|filter|find|flatten|floor|groupBy|isBlank|isDecimal|isEmpty|isEven|isInteger|isLeapYear|isOdd|joinBy|log|lower|map|mapObject|max|maxBy|min|minBy|mod|native|now|orderBy|orderBy|pluck|pluck|pow|random|read|readUrl|reduce|reduce|replace|round|scan|sizeOf|splitBy|sqrt|startsWith|sum|to|trim|typeOf|unzip|upper|with|write|zip)\b
     - name: keyword.reserved.dw
       match: \b(throw|do|for|yield|enum|private|async)\b
     - name: keyword.control.dw
@@ -228,10 +228,13 @@ repository:
 
   using-statement:
     name: using-statement.expr.dw
-    begin: (?<!\.|\$)\b(using\s*)\(
+    begin: (?<!\.|\$)\b(using)\s*(\()
     beginCaptures:
       '1': {name: keyword.control.using.dw}
-    end: \)
+      '2': {name: punctuation.definitions.begin.dw}
+    end: (\))
+    endCaptures:
+      '1': {name: punctuation.definitions.end.dw}
     patterns:
     - match: ((?:\+\+|\-\-|[A-Za-z])(?:[a-zA-Z0-9_]*))(\s*=)
       captures:
@@ -370,8 +373,12 @@ repository:
       match: \w+
 
   paren-expression:
-    begin: \(
-    end: \)
+    begin: (\()
+    beginCaptures:
+      '1': {name: punctuation.expression.begin.dw}
+    end: (\))
+    endCaptures:
+      '1': {name: punctuation.expression.end.dw}
     patterns:
     - include: '#expressions'
 
@@ -384,10 +391,24 @@ repository:
     patterns:
     - include: '#qstring-single'
     - include: '#qstring-double'
+    - include: '#qstring-backtick'
     - include: '#template'
 
+  qstring-backtick:
+    begin: '`'
+    beginCaptures:
+      '0': { name: string.quoted.double.dw punctuation.definition.string.begin.dw }
+    end: '`'
+    endCaptures:
+      '0': { name: string.quoted.double.dw punctuation.definition.string.end.dw }
+    patterns:
+    - include: '#template-substitution-element'
+    - include: '#string-character-escape'
+    - match: ([^`])
+      name: string.template.dw
+
   template:
-    begin: '([$[:alpha:]][_$[:alnum:]]*)\s*?(`)'
+    begin: '([$[:alpha:]][_$[:alnum:]]*)\s*(`)'
     beginCaptures:
       '1': { name: support.function.dw }
       '2': { name: string.template.dw punctuation.definition.string.template.begin.dw }
@@ -471,7 +492,7 @@ repository:
     - begin: \(
       beginCaptures:
         '1': {name: keyword.operator.tuple.dw}
-      end: (\)\s*->)
+      end: (\)\s*\-\>)
       patterns:
       - include: '#types'
       - include: '#parameters'

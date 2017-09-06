@@ -18,20 +18,30 @@ Grammar: DataWeave.tmLanguage
            meta.directive.var.dw keyword.operator.assignment.dw
              ^^^^^^^
              variable.other.dw
+                    ^
+                    punctuation.expression.begin.dw
+                     ^
+                     punctuation.expression.end.dw
                       ^
                       meta.selector.data-weave
                        ^^^^
                        meta.selector.data-weave meta.object.member.dw
                             ^^^
                             keyword.other.dw
+                                ^
+                                punctuation.expression.begin.dw
                                  ^^^^^^^
                                  variable.other.dw
+                                        ^
+                                        punctuation.expression.begin.dw
+                                         ^
+                                         punctuation.expression.end.dw
                                           ^
                                           meta.selector.data-weave
                                            ^^^
                                            meta.selector.data-weave meta.object.member.dw
-                                              ^^^^^^^^^^
-                                              support.function.dw
+                                               ^^^^^^^^
+                                               support.function.dw
                                                         ^
                                                         string.quoted.double.dw punctuation.definition.string.begin.dw
                                                          ^
@@ -70,3 +80,5 @@ Grammar: DataWeave.tmLanguage
                                                                          string.quoted.double.dw
                                                                           ^
                                                                           string.quoted.double.dw punctuation.definition.string.end.dw
+                                                                           ^
+                                                                           punctuation.expression.end.dw

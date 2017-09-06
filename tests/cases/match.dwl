@@ -3,6 +3,7 @@
   a: in0.phones map $ match {
     case matches /\+(\d+)\s\((\d+)\)\s(\d+\-\d+)/ -> { country: $[0], area: $[1], number: $[2] }
     case matches /\((\d+)\)\s(\d+\-\d+)/ -> { area: $[1], number: $[2] }
+    case matches/\((\d+)\)\s(\d+\-\d+)/ -> { area: $[1], number: $[2] }
     case phone matches /\((\d+)\)\s(\d+\-\d+)/ -> { area: phone[1], number: phone[2] }
   },
   // Type Pattern Matching (Can be named or unnamed)
@@ -29,5 +30,17 @@
     case "Emiliano" -> "string"
     case 3.14 -> number
     else -> "1234"
+  },
+  // Array/object deconstrunction
+  f: in0.value match {
+    case [] -> "empty case"
+    case [head ~ tail] -> [head ~ tail]
+    case {key : value ~ tail} -> {key: value}
+  },
+  // Without space between lhs and rhs
+  f: (in0.value)match{
+    case [] -> "empty case"
+    case [head ~ tail] -> [head ~ tail]
+    case {key : value ~ tail} -> {key: value}
   }
 }

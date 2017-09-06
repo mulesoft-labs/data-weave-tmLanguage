@@ -5,6 +5,7 @@ original file
   a: in0.phones map $ match {
     case matches /\+(\d+)\s\((\d+)\)\s(\d+\-\d+)/ -> { country: $[0], area: $[1], number: $[2] }
     case matches /\((\d+)\)\s(\d+\-\d+)/ -> { area: $[1], number: $[2] }
+    case matches/\((\d+)\)\s(\d+\-\d+)/ -> { area: $[1], number: $[2] }
     case phone matches /\((\d+)\)\s(\d+\-\d+)/ -> { area: phone[1], number: phone[2] }
   },
   // Type Pattern Matching (Can be named or unnamed)
@@ -31,6 +32,18 @@ original file
     case "Emiliano" -> "string"
     case 3.14 -> number
     else -> "1234"
+  },
+  // Array/object deconstrunction
+  f: in0.value match {
+    case [] -> "empty case"
+    case [head ~ tail] -> [head ~ tail]
+    case {key : value ~ tail} -> {key: value}
+  },
+  // Without space between lhs and rhs
+  f: (in0.value)match{
+    case [] -> "empty case"
+    case [head ~ tail] -> [head ~ tail]
+    case {key : value ~ tail} -> {key: value}
   }
 }
 -----------------------------------
@@ -62,8 +75,12 @@ Grammar: DataWeave.tmLanguage
          meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
           ^^^^^^
           meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
-                ^^^^^
-                meta.objectliteral.dw meta.object.member.dw support.function.dw
+                ^
+                meta.objectliteral.dw meta.object.member.dw
+                 ^^^
+                 meta.objectliteral.dw meta.object.member.dw support.function.dw
+                    ^
+                    meta.objectliteral.dw meta.object.member.dw
                      ^
                      meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
                       ^
@@ -84,7 +101,7 @@ Grammar: DataWeave.tmLanguage
           ^^^^^^^
           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.matches.dw
                  ^
-                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw
                   ^
                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw punctuation.definition.string.begin.dw
                    ^^
@@ -203,7 +220,7 @@ Grammar: DataWeave.tmLanguage
           ^^^^^^^
           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.matches.dw
                  ^
-                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw
                   ^
                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw punctuation.definition.string.begin.dw
                    ^^
@@ -282,6 +299,93 @@ Grammar: DataWeave.tmLanguage
                                                                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
                                                                         ^
                                                                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+>    case matches/\((\d+)\)\s(\d+\-\d+)/ -> { area: $[1], number: $[2] }
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^^^^^^^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.matches.dw
+                 ^
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw punctuation.definition.string.begin.dw
+                  ^^
+                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw constant.character.escape.backslash.regexp
+                    ^
+                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp punctuation.definition.group.regexp
+                     ^^
+                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp constant.other.character-class.regexp
+                       ^
+                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp keyword.operator.quantifier.regexp
+                        ^
+                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp punctuation.definition.group.regexp
+                         ^^
+                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw constant.character.escape.backslash.regexp
+                           ^^
+                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw constant.other.character-class.regexp
+                             ^
+                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp punctuation.definition.group.regexp
+                              ^^
+                              meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp constant.other.character-class.regexp
+                                ^
+                                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp keyword.operator.quantifier.regexp
+                                 ^^
+                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp constant.character.escape.backslash.regexp
+                                   ^^
+                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp constant.other.character-class.regexp
+                                     ^
+                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp keyword.operator.quantifier.regexp
+                                      ^
+                                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw meta.group.regexp punctuation.definition.group.regexp
+                                       ^
+                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw string.regexp.dw punctuation.definition.string.end.dw
+                                        ^
+                                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                                         ^^
+                                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+                                           ^
+                                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                                            ^
+                                            meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+                                             ^
+                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw
+                                              ^^^^
+                                              meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                  ^
+                                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+                                                   ^
+                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                    ^
+                                                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
+                                                     ^
+                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
+                                                      ^
+                                                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw constant.numeric.dw
+                                                       ^
+                                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
+                                                        ^
+                                                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.separator.comma.dw
+                                                         ^
+                                                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw
+                                                          ^^^^^^
+                                                          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                                ^
+                                                                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+                                                                 ^
+                                                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                                  ^
+                                                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.parameter.dw
+                                                                   ^
+                                                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
+                                                                    ^
+                                                                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw constant.numeric.dw
+                                                                     ^
+                                                                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.array.literal.dw meta.brace.square.dw
+                                                                      ^
+                                                                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                                                       ^
+                                                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
 >    case phone matches /\((\d+)\)\s(\d+\-\d+)/ -> { area: phone[1], number: phone[2] }
  ^^^^
  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
@@ -960,6 +1064,310 @@ Grammar: DataWeave.tmLanguage
                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
                   ^
                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw punctuation.definition.string.end.dw
+>  },
+ ^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+   ^
+   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw
+    ^
+    meta.objectliteral.dw punctuation.separator.comma.dw
+>  // Array/object deconstrunction
+ ^^
+ meta.objectliteral.dw
+   ^^
+   meta.objectliteral.dw comment.line.double-slash.dw punctuation.definition.comment.dw
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     meta.objectliteral.dw comment.line.double-slash.dw
+>  f: in0.value match {
+ ^^
+ meta.objectliteral.dw
+   ^
+   meta.objectliteral.dw meta.object.member.dw
+    ^
+    meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+     ^
+     meta.objectliteral.dw meta.object.member.dw
+      ^^^
+      meta.objectliteral.dw meta.object.member.dw variable.other.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
+          ^^^^^
+          meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
+               ^
+               meta.objectliteral.dw meta.object.member.dw
+                ^^^^^
+                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw keyword.control.switch.dw
+                     ^
+                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw
+                      ^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw punctuation.definition.block.dw
+>    case [] -> "empty case"
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+           ^
+           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+            ^
+            meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+             ^^
+             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+               ^
+               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                ^
+                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+                 ^
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                  ^
+                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                   ^
+                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                    ^
+                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                     ^
+                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                      ^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                       ^
+                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                        ^
+                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                         ^
+                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                          ^
+                          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                           ^
+                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw punctuation.definition.string.end.dw
+>    case [head ~ tail] -> [head ~ tail]
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+           ^^^^
+           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw variable.other.dw
+               ^^^
+               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw
+                  ^^^^
+                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw variable.other.dw
+                      ^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+                       ^
+                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                        ^^
+                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+                          ^
+                          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                           ^
+                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw meta.brace.square.dw
+                            ^^^^
+                            meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw variable.other.dw
+                                ^^^
+                                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw
+                                   ^^^^
+                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw variable.other.dw
+                                       ^
+                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw meta.brace.square.dw
+>    case {key : value ~ tail} -> {key: value}
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+           ^^^^
+           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw
+               ^
+               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+                ^
+                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw
+                 ^^^^^
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                      ^^^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw
+                         ^^^^
+                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                             ^
+                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+                              ^
+                              meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                               ^^
+                               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+                                 ^
+                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                                  ^
+                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+                                   ^^^
+                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                      ^
+                                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+                                       ^
+                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                        ^^^^^
+                                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                             ^
+                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+>  },
+ ^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+   ^
+   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw
+    ^
+    meta.objectliteral.dw punctuation.separator.comma.dw
+>  // Without space between lhs and rhs
+ ^^
+ meta.objectliteral.dw
+   ^^
+   meta.objectliteral.dw comment.line.double-slash.dw punctuation.definition.comment.dw
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     meta.objectliteral.dw comment.line.double-slash.dw
+>  f: (in0.value)match{
+ ^^
+ meta.objectliteral.dw
+   ^
+   meta.objectliteral.dw meta.object.member.dw
+    ^
+    meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+     ^
+     meta.objectliteral.dw meta.object.member.dw
+      ^
+      meta.objectliteral.dw meta.object.member.dw punctuation.expression.begin.dw
+       ^^^
+       meta.objectliteral.dw meta.object.member.dw variable.other.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
+           ^^^^^
+           meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
+                ^
+                meta.objectliteral.dw meta.object.member.dw punctuation.expression.end.dw
+                 ^^^^^
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw keyword.control.switch.dw
+                      ^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw punctuation.definition.block.dw
+>    case [] -> "empty case"
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+           ^
+           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+            ^
+            meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+             ^^
+             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+               ^
+               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                ^
+                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+                 ^
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                  ^
+                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                   ^
+                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                    ^
+                    meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                     ^
+                     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                      ^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                       ^
+                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                        ^
+                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                         ^
+                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                          ^
+                          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw
+                           ^
+                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw string.quoted.double.dw punctuation.definition.string.end.dw
+>    case [head ~ tail] -> [head ~ tail]
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+           ^^^^
+           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw variable.other.dw
+               ^^^
+               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw
+                  ^^^^
+                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw variable.other.dw
+                      ^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.array.literal.dw meta.brace.square.dw
+                       ^
+                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                        ^^
+                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+                          ^
+                          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                           ^
+                           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw meta.brace.square.dw
+                            ^^^^
+                            meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw variable.other.dw
+                                ^^^
+                                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw
+                                   ^^^^
+                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw variable.other.dw
+                                       ^
+                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.array.literal.dw meta.brace.square.dw
+>    case {key : value ~ tail} -> {key: value}
+ ^^^^
+ meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+     ^^^^
+     meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+         ^
+         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+          ^
+          meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+           ^^^^
+           meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw
+               ^
+               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+                ^
+                meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw
+                 ^^^^^
+                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                      ^^^
+                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw
+                         ^^^^
+                         meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                             ^
+                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+                              ^
+                              meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw
+                               ^^
+                               meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw case-clause.expr.dw keyword.control.switch.dw
+                                 ^
+                                 meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw
+                                  ^
+                                  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
+                                   ^^^
+                                   meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                      ^
+                                      meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+                                       ^
+                                       meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw
+                                        ^^^^^
+                                        meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw meta.object.member.dw variable.other.dw
+                                             ^
+                                             meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw meta.objectliteral.dw punctuation.definition.block.dw
 >  }
  ^^
  meta.objectliteral.dw meta.object.member.dw match-statement.expr.dw match-block.expr.dw

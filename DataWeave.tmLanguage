@@ -188,7 +188,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(matches)\s+</string>
+            <string>(?&lt;!\.|\$)\b(matches)\b</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -563,13 +563,13 @@
             <key>name</key>
             <string>support.function.dw</string>
             <key>match</key>
-            <string>(?&lt;!case)\s*(matches)\s</string>
+            <string>(?&lt;!case)\s*\b(matches)\b</string>
           </dict>
           <dict>
             <key>name</key>
             <string>support.function.dw</string>
             <key>match</key>
-            <string>\s(abs|avg|ceil|contains|distinctBy|endsWith|filter|find|flatten|floor|groupBy|isBlank|isDecimal|isEmpty|isEven|isInteger|isLeapYear|isOdd|joinBy|log|lower|map|mapObject|max|maxBy|min|minBy|mod|native|now|orderBy|orderBy|pluck|pluck|pow|random|read|readUrl|reduce|reduce|replace|round|scan|sizeOf|splitBy|sqrt|startsWith|sum|to|trim|typeOf|unzip|upper|with|write|zip)\s</string>
+            <string>\b(abs|avg|ceil|contains|distinctBy|endsWith|filter|find|flatten|floor|groupBy|isBlank|isDecimal|isEmpty|isEven|isInteger|isLeapYear|isOdd|joinBy|log|lower|map|mapObject|max|maxBy|min|minBy|mod|native|now|orderBy|orderBy|pluck|pluck|pow|random|read|readUrl|reduce|reduce|replace|round|scan|sizeOf|splitBy|sqrt|startsWith|sum|to|trim|typeOf|unzip|upper|with|write|zip)\b</string>
           </dict>
           <dict>
             <key>name</key>
@@ -680,7 +680,7 @@
         <key>name</key>
         <string>using-statement.expr.dw</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(using\s*)\(</string>
+        <string>(?&lt;!\.|\$)\b(using)\s*(\()</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -688,9 +688,22 @@
             <key>name</key>
             <string>keyword.control.using.dw</string>
           </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definitions.begin.dw</string>
+          </dict>
         </dict>
         <key>end</key>
-        <string>\)</string>
+        <string>(\))</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definitions.end.dw</string>
+          </dict>
+        </dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -1095,9 +1108,25 @@
       <key>paren-expression</key>
       <dict>
         <key>begin</key>
-        <string>\(</string>
+        <string>(\()</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.expression.begin.dw</string>
+          </dict>
+        </dict>
         <key>end</key>
-        <string>\)</string>
+        <string>(\))</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.expression.end.dw</string>
+          </dict>
+        </dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -1127,14 +1156,58 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#qstring-backtick</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#template</string>
+          </dict>
+        </array>
+      </dict>
+      <key>qstring-backtick</key>
+      <dict>
+        <key>begin</key>
+        <string>`</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.double.dw punctuation.definition.string.begin.dw</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>`</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.double.dw punctuation.definition.string.end.dw</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#template-substitution-element</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#string-character-escape</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>([^`])</string>
+            <key>name</key>
+            <string>string.template.dw</string>
           </dict>
         </array>
       </dict>
       <key>template</key>
       <dict>
         <key>begin</key>
-        <string>([$[:alpha:]][_$[:alnum:]]*)\s*?(`)</string>
+        <string>([$[:alpha:]][_$[:alnum:]]*)\s*(`)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1392,7 +1465,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(\)\s*-&gt;)</string>
+            <string>(\)\s*\-\&gt;)</string>
             <key>patterns</key>
             <array>
               <dict>

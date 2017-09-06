@@ -12,13 +12,13 @@ Grammar: DataWeave.tmLanguage
         ^^
         meta.attributes.dw keyword.operator.attributes.dw
           ^
-          meta.attributes.dw
+          meta.attributes.dw punctuation.expression.begin.dw
            ^^^^
            meta.attributes.dw variable.other.dw
                ^^
                meta.attributes.dw meta.selector.data-weave
                  ^
-                 meta.attributes.dw
+                 meta.attributes.dw punctuation.expression.end.dw
                   ^
                   meta.attributes.dw punctuation.separator.comma.dw
                    ^

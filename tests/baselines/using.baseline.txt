@@ -3,6 +3,10 @@ original file
 fun printPassCapable(item) =
   using(msg = aa)
     item
+
+fun printPassCapable(item) =
+  using(msg = println(1 map 3))
+    item
 -----------------------------------
 
 Grammar: DataWeave.tmLanguage
@@ -28,7 +32,7 @@ Grammar: DataWeave.tmLanguage
    ^^^^^
    using-statement.expr.dw keyword.control.using.dw
         ^
-        using-statement.expr.dw
+        using-statement.expr.dw punctuation.definitions.begin.dw
          ^^^
          using-statement.expr.dw entity.name.variable.dw
             ^^
@@ -38,7 +42,57 @@ Grammar: DataWeave.tmLanguage
                ^^
                using-statement.expr.dw variable.other.dw
                  ^
-                 using-statement.expr.dw
+                 using-statement.expr.dw punctuation.definitions.end.dw
+>    item
+     ^^^^
+     variable.other.dw
+>
+>fun printPassCapable(item) =
+ ^^^
+ meta.directive.fun.dw storage.type.dw
+    ^
+    meta.directive.fun.dw
+     ^^^^^^^^^^^^^^^^
+     meta.directive.fun.dw entity.name.function.dw
+                     ^
+                     meta.directive.fun.dw
+                      ^^^^
+                      meta.directive.fun.dw variable.parameter.dw
+                          ^
+                          meta.directive.fun.dw
+                           ^
+                           meta.directive.fun.dw
+                            ^
+                            meta.directive.fun.dw keyword.operator.assignment.dw
+>  using(msg = println(1 map 3))
+   ^^^^^
+   using-statement.expr.dw keyword.control.using.dw
+        ^
+        using-statement.expr.dw punctuation.definitions.begin.dw
+         ^^^
+         using-statement.expr.dw entity.name.variable.dw
+            ^^
+            using-statement.expr.dw keyword.operator.dw
+              ^
+              using-statement.expr.dw
+               ^^^^^^^
+               using-statement.expr.dw variable.other.dw
+                      ^
+                      using-statement.expr.dw punctuation.expression.begin.dw
+                       ^
+                       using-statement.expr.dw constant.numeric.dw
+                        ^
+                        using-statement.expr.dw
+                         ^^^
+                         using-statement.expr.dw support.function.dw
+                            ^
+                            using-statement.expr.dw
+                             ^
+                             using-statement.expr.dw constant.numeric.dw
+                              ^
+                              using-statement.expr.dw punctuation.expression.end.dw
+                               ^
+                               using-statement.expr.dw punctuation.definitions.end.dw
 >    item
      ^^^^
      variable.other.dw
