@@ -1194,6 +1194,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#template-dollar</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#string-character-escape</string>
           </dict>
           <dict>
@@ -1236,6 +1240,10 @@
           <dict>
             <key>include</key>
             <string>#template-substitution-element</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#template-dollar</string>
           </dict>
           <dict>
             <key>include</key>
@@ -1286,6 +1294,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#template-dollar</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#string-character-escape</string>
           </dict>
           <dict>
@@ -1331,6 +1343,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#template-dollar</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#string-character-escape</string>
           </dict>
           <dict>
@@ -1338,6 +1354,43 @@
             <string>([^'])</string>
             <key>name</key>
             <string>string.quoted.single.dw</string>
+          </dict>
+        </array>
+      </dict>
+      <key>template-dollar</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>match</key>
+            <string>(\$(\$)+)</string>
+            <key>name</key>
+            <string>variable.parameter.dw</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(\$)(?![a-zA-Z(])</string>
+            <key>name</key>
+            <string>variable.parameter.dw</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(\$)([a-zA-Z][a-zA-Z0-9_]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.other.dw</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.dw</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>variable.parameter.dw</string>
           </dict>
         </array>
       </dict>
