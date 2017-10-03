@@ -1862,7 +1862,7 @@
         <key>begin</key>
         <string>(\s*(import)\s+)</string>
         <key>end</key>
-        <string>(?=(fun|input|output|type|var|ns|import|%dw|private|---)\s)</string>
+        <string>(?=(fun|input|output|type|var|ns|import|%dw|private|---)\s|$)</string>
         <key>beginCaptures</key>
         <dict>
           <key>2</key>
@@ -1873,6 +1873,10 @@
         </dict>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>include</key>
+            <string>#comments</string>
+          </dict>
           <dict>
             <key>match</key>
             <string>(,)</string>

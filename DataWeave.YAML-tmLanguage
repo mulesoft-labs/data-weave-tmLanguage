@@ -618,10 +618,11 @@ repository:
   import-directive:
     name: meta.directive.import.dw
     begin: (\s*(import)\s+)
-    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s)
+    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s|$)
     beginCaptures:
       '2': {name: storage.type.dw}
     patterns:
+    - include: '#comments'
     - match: (,)
     - match: (\*)
     - match: \b(from)\s+
