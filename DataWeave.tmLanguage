@@ -414,6 +414,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#do-statement</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#if-statement</string>
           </dict>
           <dict>
@@ -726,6 +730,63 @@
           <dict>
             <key>include</key>
             <string>#expressions</string>
+          </dict>
+        </array>
+      </dict>
+      <key>do-statement</key>
+      <dict>
+        <key>name</key>
+        <string>do-statement.expr.dw</string>
+        <key>begin</key>
+        <string>(?&lt;!\.|\$)\b(do)\s*(\{)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.do.dw</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definitions.begin.dw</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(\})</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definitions.end.dw</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#comments</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#directives</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(---)</string>
+            <key>name</key>
+            <string>keyword.operator.body-marker.dw</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#expressions</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>([^\s]+)</string>
+            <key>name</key>
+            <string>invalid</string>
           </dict>
         </array>
       </dict>

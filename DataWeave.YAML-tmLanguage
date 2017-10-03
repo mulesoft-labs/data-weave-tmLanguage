@@ -136,6 +136,7 @@ repository:
     - include: '#comments'
     - include: '#match-statement'
     - include: '#using-statement'
+    - include: '#do-statement'
     - include: '#if-statement'
     - include: '#regex'
     - include: '#keywords'
@@ -241,7 +242,25 @@ repository:
         '1': {name: entity.name.variable.dw}
         '2': {name: keyword.operator.dw}
     - include: '#expressions'
-    
+
+  do-statement:
+    name: do-statement.expr.dw
+    begin: (?<!\.|\$)\b(do)\s*(\{)
+    beginCaptures:
+      '1': {name: keyword.control.do.dw}
+      '2': {name: punctuation.definitions.begin.dw}
+    end: (\})
+    endCaptures:
+      '1': {name: punctuation.definitions.end.dw}
+    patterns:
+    - include: '#comments'
+    - include: '#directives'
+    - match: (---)
+      name: keyword.operator.body-marker.dw
+    - include: '#expressions'
+    - match: ([^\s]+)
+      name: invalid
+
   if-statement:
     name: meta.if.dw
     begin: (?<!\.|\$)\b(if\s*)\(
