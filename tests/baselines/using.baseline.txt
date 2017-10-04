@@ -6,7 +6,7 @@ fun printPassCapable(item) =
 
 fun printPassCapable(item) =
   using(msg = println(1 map 3))
-    item
+    item map 3
 -----------------------------------
 
 Grammar: DataWeave.tmLanguage
@@ -81,18 +81,18 @@ Grammar: DataWeave.tmLanguage
                       using-statement.expr.dw punctuation.expression.begin.dw
                        ^
                        using-statement.expr.dw constant.numeric.dw
-                        ^
-                        using-statement.expr.dw
-                         ^^^
-                         using-statement.expr.dw support.function.dw
-                            ^
-                            using-statement.expr.dw
+                        ^^^^^
+                        using-statement.expr.dw support.function.dw
                              ^
                              using-statement.expr.dw constant.numeric.dw
                               ^
                               using-statement.expr.dw punctuation.expression.end.dw
                                ^
                                using-statement.expr.dw punctuation.definitions.end.dw
->    item
+>    item map 3
      ^^^^
      variable.other.dw
+         ^^^^^
+         support.function.dw
+              ^
+              constant.numeric.dw

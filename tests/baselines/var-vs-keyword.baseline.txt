@@ -106,14 +106,14 @@ Grammar: DataWeave.tmLanguage
  ^^
  meta.array.literal.dw
    ^^^
-   meta.array.literal.dw keyword.other.dw
+   meta.array.literal.dw invalid
       ^
       meta.array.literal.dw punctuation.separator.comma.dw
 >  map,
  ^^
  meta.array.literal.dw
    ^^^
-   meta.array.literal.dw support.function.dw
+   meta.array.literal.dw variable.other.dw
       ^
       meta.array.literal.dw punctuation.separator.comma.dw
 >  a and b,
@@ -136,12 +136,8 @@ Grammar: DataWeave.tmLanguage
  meta.array.literal.dw
    ^
    meta.array.literal.dw variable.other.dw
-    ^
-    meta.array.literal.dw
-     ^^^
-     meta.array.literal.dw support.function.dw
-        ^
-        meta.array.literal.dw
+    ^^^^^
+    meta.array.literal.dw support.function.dw
          ^
          meta.array.literal.dw variable.other.dw
           ^
@@ -149,10 +145,8 @@ Grammar: DataWeave.tmLanguage
 >  not x
  ^^
  meta.array.literal.dw
-   ^^^
+   ^^^^
    meta.array.literal.dw keyword.other.dw
-      ^
-      meta.array.literal.dw
        ^
        meta.array.literal.dw variable.other.dw
 >]

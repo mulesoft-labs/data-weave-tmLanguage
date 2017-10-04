@@ -84,12 +84,8 @@ Grammar: DataWeave.tmLanguage
  do-statement.expr.dw
    ^
    do-statement.expr.dw variable.other.dw
-    ^
-    do-statement.expr.dw
-     ^^^
-     do-statement.expr.dw support.function.dw
-        ^
-        do-statement.expr.dw
+    ^^^^^
+    do-statement.expr.dw support.function.dw
          ^
          do-statement.expr.dw variable.parameter.dw
 >}
@@ -213,7 +209,7 @@ Grammar: DataWeave.tmLanguage
               ^
               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
                ^^^
-               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw support.function.dw
+               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw variable.other.dw
                   ^
                   meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw punctuation.expression.begin.dw
                    ^
@@ -373,28 +369,16 @@ Grammar: DataWeave.tmLanguage
  meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw do-statement.expr.dw
        ^
        meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw do-statement.expr.dw punctuation.definitions.end.dw
-        ^
-        meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
-         ^
-         meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw keyword.operator.arithmetic.dw
-          ^
-          meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw keyword.operator.arithmetic.dw
-           ^
-           meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
+        ^^^^
+        meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw support.function.dw
             ^
             meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw string.quoted.double.dw punctuation.definition.string.begin.dw
              ^
              meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw string.quoted.double.dw
               ^
               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw string.quoted.double.dw punctuation.definition.string.end.dw
-               ^
-               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
-                ^
-                meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw keyword.operator.arithmetic.dw
-                 ^
-                 meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw keyword.operator.arithmetic.dw
-                  ^
-                  meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
+               ^^^^
+               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw support.function.dw
                    ^
                    meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw variable.other.dw
 >    }
@@ -475,14 +459,8 @@ Grammar: DataWeave.tmLanguage
                                              meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw string.quoted.double.dw
                                               ^
                                               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw string.quoted.double.dw punctuation.definition.string.end.dw
-                                               ^
-                                               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
-                                                ^
-                                                meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw keyword.operator.arithmetic.dw
-                                                 ^
-                                                 meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw keyword.operator.arithmetic.dw
-                                                  ^
-                                                  meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
+                                               ^^^^
+                                               meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw support.function.dw
                                                    ^
                                                    meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw variable.other.dw
                                                     ^
@@ -493,12 +471,8 @@ Grammar: DataWeave.tmLanguage
                                                         meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
                                                          ^
                                                          meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw variable.other.dw
-                                                          ^
-                                                          meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
-                                                           ^^^
-                                                           meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw support.function.dw
-                                                              ^
-                                                              meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw
+                                                          ^^^^^
+                                                          meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw support.function.dw
                                                                ^
                                                                meta.objectliteral.dw meta.object.member.dw do-statement.expr.dw do-statement.expr.dw punctuation.expression.begin.dw
                                                                 ^

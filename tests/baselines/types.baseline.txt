@@ -1258,7 +1258,7 @@ Grammar: DataWeave.tmLanguage
                               ^
                               meta.directive.fun.dw keyword.operator.assignment.dw
                                 ^^^^^^
-                                support.function.dw
+                                variable.other.dw
                                       ^
                                       punctuation.expression.begin.dw
                                        ^
@@ -1558,7 +1558,7 @@ Grammar: DataWeave.tmLanguage
                                     ^
                                     meta.directive.fun.dw keyword.operator.assignment.dw
                                       ^^^^^^
-                                      support.function.dw
+                                      variable.other.dw
                                             ^
                                             punctuation.expression.begin.dw
                                              ^

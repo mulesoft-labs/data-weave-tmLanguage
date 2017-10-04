@@ -107,7 +107,13 @@
             <key>name</key>
             <string>variable.other.dw</string>
             <key>match</key>
-            <string>\b(?!(fun|input|output|type|var|ns|import|%dw|private|---)\s)((\+\+|\-\-|[A-Za-z])[a-zA-Z0-9_]*)</string>
+            <string>\b(?!(fun|input|output|type|var|ns|import|%dw|private|---)\b)((\+\+|\-\-|[A-Za-z])[a-zA-Z0-9_]*)</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>invalid</string>
+            <key>match</key>
+            <string>\b(fun|input|output|type|var|ns|import|private)\b</string>
           </dict>
           <dict>
             <key>name</key>
@@ -382,12 +388,25 @@
         <key>end</key>
         <string>(?=\n)</string>
       </dict>
+      <key>infix</key>
+      <dict>
+        <key>name</key>
+        <string>support.function.dw</string>
+        <key>match</key>
+        <string>(?&lt;!^|,|\[|\(|=|\+|&gt;|&lt;|\-|\*|:|\{|case|is|else|not|as|and|or)(?&lt;=[a-zA-Z0-9_$\}\])"'`|/])\s*(?!(var|match|case|else|fun|input|output|is|as|default|ns|import|null|false|true|using|do|not|and|or)\s)(\+\+|\-\-|[a-zA-Z][a-zA-Z_0-9]*)(\s+|\s*(?=["'/|{]))</string>
+      </dict>
       <key>expressions</key>
       <dict>
         <key>name</key>
         <string>expression</string>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>name</key>
+            <string>keyword.other.dw</string>
+            <key>match</key>
+            <string>\b(not)\s+</string>
+          </dict>
           <dict>
             <key>include</key>
             <string>#paren-expression</string>
@@ -456,6 +475,10 @@
             <key>include</key>
             <string>#directives</string>
           </dict>
+          <dict>
+            <key>include</key>
+            <string>#infix</string>
+          </dict>
         </array>
       </dict>
       <key>generics</key>
@@ -519,7 +542,7 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>variable.language.dw</string>
+            <string>entity.name.variable.dw</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -559,27 +582,15 @@
         <array>
           <dict>
             <key>name</key>
-            <string>support.function.dw</string>
-            <key>match</key>
-            <string>\s(match)\s(?!\{)</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>support.function.dw</string>
-            <key>match</key>
-            <string>(?&lt;!case)\s*\b(matches)\b</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>support.function.dw</string>
-            <key>match</key>
-            <string>\b(abs|avg|ceil|contains|distinctBy|endsWith|filter|find|flatten|floor|groupBy|isBlank|isDecimal|isEmpty|isEven|isInteger|isLeapYear|isOdd|joinBy|log|lower|map|mapObject|max|maxBy|min|minBy|mod|native|now|orderBy|orderBy|pluck|pluck|pow|random|read|readUrl|reduce|reduce|replace|round|scan|sizeOf|splitBy|sqrt|startsWith|sum|to|trim|typeOf|unzip|upper|with|write|zip)\b</string>
-          </dict>
-          <dict>
-            <key>name</key>
             <string>keyword.reserved.dw</string>
             <key>match</key>
-            <string>\b(throw|do|for|yield|enum|private|async)\b</string>
+            <string>\b(throw|for|yield|enum|private|async)\b</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>invalid</string>
+            <key>match</key>
+            <string>\b(not)\b</string>
           </dict>
           <dict>
             <key>name</key>
@@ -591,7 +602,7 @@
             <key>name</key>
             <string>keyword.operator.comparison.dw</string>
             <key>match</key>
-            <string>(~=|==|!=|===|!==|&lt;=|&gt;=|&lt;|&gt;)</string>
+            <string>(~=|==|!=|!=|&lt;=|&gt;=|&lt;|&gt;)</string>
           </dict>
           <dict>
             <key>name</key>
@@ -615,7 +626,7 @@
             <key>name</key>
             <string>keyword.other.dw</string>
             <key>match</key>
-            <string>\b(not|and|or)\b</string>
+            <string>\b(and|or)\b</string>
           </dict>
         </array>
       </dict>

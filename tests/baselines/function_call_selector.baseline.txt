@@ -40,8 +40,8 @@ Grammar: DataWeave.tmLanguage
                                           meta.selector.data-weave
                                            ^^^
                                            meta.selector.data-weave meta.object.member.dw
-                                               ^^^^^^^^
-                                               support.function.dw
+                                              ^^^^^^^^^^
+                                              support.function.dw
                                                         ^
                                                         string.quoted.double.dw punctuation.definition.string.begin.dw
                                                          ^

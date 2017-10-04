@@ -4,4 +4,4 @@ fun printPassCapable(item) =
 
 fun printPassCapable(item) =
   using(msg = println(1 map 3))
-    item
+    item map 3
