@@ -5,16 +5,10 @@
   "description": "",
   "main": "test.ts",
   "scripts": {
-    "pretest": "node ../build/build.js && tsc",
-    "test": "mocha --full-trace test.js"
+    "updateSnapshot": "vscode-tmgrammar-snap -s source.data-weave -g ../DataWeave.tmLanguage -t 'cases/*.dwl' --updateSnapshot",
+    "test": "vscode-tmgrammar-snap -s source.data-weave -g ../DataWeave.tmLanguage -t 'cases/*.dwl'"
   },
   "dependencies": {
-    "@types/chai": "latest",
-    "@types/mocha": "latest",
-    "@types/node": "latest",
-    "chai": "latest",
-    "mocha": "latest",
-    "typescript": "latest",
-    "vscode-textmate": "latest"
+    "vscode-tmgrammar-test": "latest"
   }
 }

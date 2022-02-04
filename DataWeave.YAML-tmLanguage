@@ -25,6 +25,8 @@ repository:
     - include: '#ns-directive'
     - include: '#input-directive'
     - include: '#output-directive'
+    - include: '#annotation-usage'
+    - include: '#annotation-directive'
 
   function_call:
     name: function_call
@@ -351,15 +353,10 @@ repository:
         '1': {name: meta.object-literal.key.dw}
 
   object-member:
+    name: meta.object.member.first.dw
     patterns:
     - include: '#comments'
     - include: '#paren-expression'
-    - begin: \s+if\b
-      beginCaptures:
-        '0': {name: keyword.control.dw}
-      end: (?=,|})
-      patterns:
-      - include: '#expressions'
     - include: '#object-key'
     - include: '#attr-literal'
     - include: '#object-member-body'
@@ -561,6 +558,8 @@ repository:
       - include: '#punctuation-comma'
       - include: '#object-member-type'
     - begin: \(
+      beginCaptures:
+        '1': {name: keyword.operator.grouping.dw}
       end: \)
       patterns:
       - include: '#types'
@@ -610,7 +609,7 @@ repository:
   type-directive:
     name: meta.directive.type.dw
     begin: (\s*(type)\s+([a-zA-Z][a-zA-Z0-9]*))
-    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s)
+    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s|(\@[a-zA-Z][a-zA-Z0-9]*))
     beginCaptures:
       '2': {name: storage.type.dw}
       '3': {name: entity.name.type.dw}
@@ -669,7 +668,7 @@ repository:
 
   fun-directive:
     name: meta.directive.fun.dw
-    begin: (\s*(fun)\s+([a-zA-Z][a-zA-Z0-9]*))
+    begin: (\s*(fun)\s+([a-zA-Z][a-zA-Z0-9_]*|--|\+\+))
     end: (=)
     beginCaptures:
       '2': {name: storage.type.dw}
@@ -692,6 +691,35 @@ repository:
       patterns:
       - include: '#types'
 
+  annotation-directive:
+    name: meta.directive.annot.dw
+    begin: (\s*(annotation)\s+([a-zA-Z][a-zA-Z0-9]*))
+    end: (?=\n)
+    beginCaptures:
+      '2': {name: storage.type.dw}
+      '3': {name: entity.name.function.dw}
+    endCaptures:
+      '0': {name: keyword.operator.assignment.dw}
+    patterns:
+    - begin: \(
+      end: \)
+      patterns:
+      - include: '#parameters'
+
+  annotation-usage:
+    name: meta.annot.usage.dw
+    begin: (\s*(\@)([a-zA-Z][a-zA-Z0-9]*))
+    end: (?=\n)
+    beginCaptures:
+      '2': {name: storage.type.dw}
+      '3': {name: entity.name.function.dw}
+    endCaptures:
+      '0': {name: keyword.operator.assignment.dw}
+    patterns:
+    - begin: \(
+      end: \)
+      patterns:
+      - include: '#parameters'
 
   array-literal:
     name: meta.array.literal.dw
