@@ -77,6 +77,14 @@
             <key>include</key>
             <string>#output-directive</string>
           </dict>
+          <dict>
+            <key>include</key>
+            <string>#annotation-usage</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#annotation-directive</string>
+          </dict>
         </array>
       </dict>
       <key>function_call</key>
@@ -1028,6 +1036,8 @@
       </dict>
       <key>object-member</key>
       <dict>
+        <key>name</key>
+        <string>meta.object.member.first.dw</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -1037,27 +1047,6 @@
           <dict>
             <key>include</key>
             <string>#paren-expression</string>
-          </dict>
-          <dict>
-            <key>begin</key>
-            <string>\s+if\b</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.dw</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>(?=,|})</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#expressions</string>
-              </dict>
-            </array>
           </dict>
           <dict>
             <key>include</key>
@@ -1674,6 +1663,14 @@
           <dict>
             <key>begin</key>
             <string>\(</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.grouping.dw</string>
+              </dict>
+            </dict>
             <key>end</key>
             <string>\)</string>
             <key>patterns</key>
@@ -1825,7 +1822,7 @@
         <key>begin</key>
         <string>(\s*(type)\s+([a-zA-Z][a-zA-Z0-9]*))</string>
         <key>end</key>
-        <string>(?=(fun|input|output|type|var|ns|import|%dw|private|---)\s)</string>
+        <string>(?=(fun|input|output|type|var|ns|import|%dw|private|---)\s|(\@[a-zA-Z][a-zA-Z0-9]*))</string>
         <key>beginCaptures</key>
         <dict>
           <key>2</key>
@@ -2010,7 +2007,7 @@
         <key>name</key>
         <string>meta.directive.fun.dw</string>
         <key>begin</key>
-        <string>(\s*(fun)\s+([a-zA-Z][a-zA-Z0-9]*))</string>
+        <string>(\s*(fun)\s+([a-zA-Z][a-zA-Z0-9_]*|--|\+\+))</string>
         <key>end</key>
         <string>(=)</string>
         <key>beginCaptures</key>
@@ -2080,6 +2077,98 @@
               <dict>
                 <key>include</key>
                 <string>#types</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>annotation-directive</key>
+      <dict>
+        <key>name</key>
+        <string>meta.directive.annot.dw</string>
+        <key>begin</key>
+        <string>(\s*(annotation)\s+([a-zA-Z][a-zA-Z0-9]*))</string>
+        <key>end</key>
+        <string>(?=\n)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.dw</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.dw</string>
+          </dict>
+        </dict>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.assignment.dw</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>\(</string>
+            <key>end</key>
+            <string>\)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#parameters</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>annotation-usage</key>
+      <dict>
+        <key>name</key>
+        <string>meta.annot.usage.dw</string>
+        <key>begin</key>
+        <string>(\s*(\@)([a-zA-Z][a-zA-Z0-9]*))</string>
+        <key>end</key>
+        <string>(?=\n)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.dw</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.dw</string>
+          </dict>
+        </dict>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.assignment.dw</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>\(</string>
+            <key>end</key>
+            <string>\)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#parameters</string>
               </dict>
             </array>
           </dict>
