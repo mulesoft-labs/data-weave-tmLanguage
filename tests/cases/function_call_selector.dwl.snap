@@ -9,7 +9,7 @@
 #                   ^ source.data-weave punctuation.expression.begin.dw
 #                    ^ source.data-weave punctuation.expression.end.dw
 #                     ^ source.data-weave meta.selector.data-weave
-#                      ^^^^ source.data-weave meta.selector.data-weave meta.object.member.dw
+#                      ^^^^ source.data-weave meta.selector.data-weave variable.object.member.dw
 #                          ^ source.data-weave
 #                           ^^^ source.data-weave keyword.other.dw
 #                              ^ source.data-weave
@@ -18,7 +18,7 @@
 #                                       ^ source.data-weave punctuation.expression.begin.dw
 #                                        ^ source.data-weave punctuation.expression.end.dw
 #                                         ^ source.data-weave meta.selector.data-weave
-#                                          ^^^ source.data-weave meta.selector.data-weave meta.object.member.dw
+#                                          ^^^ source.data-weave meta.selector.data-weave variable.object.member.dw
 #                                             ^^^^^^^^^^ source.data-weave support.function.dw
 #                                                       ^ source.data-weave string.quoted.double.dw punctuation.definition.string.begin.dw
 #                                                        ^ source.data-weave string.quoted.double.dw
