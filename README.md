@@ -28,3 +28,12 @@ cd ../tests
 npm install         # Installs dependencies required for testing
 npm test            # Compiles & runs tests
 ```
+### Update Snapshots
+
+Tests are run using snapshot testing, there is a baseline for each of the cases which is the .snap file.
+You can update the snapshots once you are sure the changes are desired by doing
+
+``` sh
+cd tests
+npm run updateSnapshot          # Update snapshots
+```
