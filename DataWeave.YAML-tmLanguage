@@ -141,6 +141,7 @@ repository:
     patterns:
     - name: keyword.other.dw
       match: \b(not)\s+
+    - include: '#undefined-fun-character'
     - include: '#paren-expression'
     - include: '#strings'
     - include: '#constants'
@@ -451,6 +452,10 @@ repository:
     name: constant.character.escape.dw
     match: \\(u\h{4}|$|.)
 
+  undefined-fun-character:
+    name: constant.language.undefined.dw
+    match: \?\?\?
+
   qstring-double:
     begin: '"'
     beginCaptures:
@@ -506,37 +511,12 @@ repository:
   types:
     patterns:
     - include: '#comments'
-    - name: support.class.dw
-      match: \b(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)\b
-    - begin: \b(Array|Type)\s*<\b
-      beginCaptures:
-        '1': {name: support.type.dw}
-      end: '>'
-      patterns:
-      - match: ','
-        name: invalid
-      - include: '#types'
-    
-    - name: keyword.operator.declaration.dw
-      match: (&|\|)
-    - name: keyword.operator.declaration.dw
-      match: '<:'
-    - name: support.class.dw
-      match: \b([A-Z][a-zA-Z0-9_]*)
     - begin: <
       end: '>'
       patterns:
       - include: '#types'
       - include: '#punctuation-comma'
       - include: '#comments'
-    - begin: \(
-      beginCaptures:
-        '1': {name: keyword.operator.tuple.dw}
-      end: (\)\s*\-\>)
-      patterns:
-      - include: '#types'
-      - include: '#parameters'
-
     - begin: \{\-\|
       end: \|\-\}
       patterns:
@@ -557,12 +537,32 @@ repository:
       patterns:
       - include: '#punctuation-comma'
       - include: '#object-member-type'
-    - begin: \(
+    - begin: (\()
       beginCaptures:
-        '1': {name: keyword.operator.grouping.dw}
-      end: \)
+        '0': {name: keyword.operator.grouping.dw}
+      end: (\)\s*->|\))
+      endCaptures:
+        '0': {name: keyword.operator.grouping.dw}
       patterns:
       - include: '#types'
+      - include: '#parameters'
+    - name: support.class.dw
+      match: (String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)
+    - begin: (Array|Type)\s*<
+      beginCaptures:
+        '1': {name: support.type.dw}
+      end: '>'
+      patterns:
+      - match: ','
+        name: invalid
+      - include: '#types'
+    - name: keyword.operator.declaration.dw
+      match: (&|\|)
+    - name: keyword.operator.declaration.dw
+      match: '<:'
+    - name: support.class.dw
+      match: \b([A-Z][a-zA-Z0-9_]*)
+    - include: '#undefined-fun-character'
 
     - match: \b(var|fun|ns)\b
     - name: invalid
@@ -696,7 +696,7 @@ repository:
     begin: (\s*(annotation)\s+([a-zA-Z][a-zA-Z0-9]*))
     end: (?=\n)
     beginCaptures:
-      '2': {name: storage.type.dw}
+      '2': {name: storage.type.annotation.dw}
       '3': {name: entity.name.function.dw}
     endCaptures:
       '0': {name: keyword.operator.assignment.dw}
@@ -711,7 +711,7 @@ repository:
     begin: (\s*(\@)([a-zA-Z][a-zA-Z0-9]*))
     end: (?=\n)
     beginCaptures:
-      '2': {name: storage.type.dw}
+      '2': {name: storage.type.annotation.dw}
       '3': {name: entity.name.function.dw}
     endCaptures:
       '0': {name: keyword.operator.assignment.dw}

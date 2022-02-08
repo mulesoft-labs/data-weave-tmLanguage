@@ -417,6 +417,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#undefined-fun-character</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#paren-expression</string>
           </dict>
           <dict>
@@ -1325,6 +1329,13 @@
         <key>match</key>
         <string>\\(u\h{4}|$|.)</string>
       </dict>
+      <key>undefined-fun-character</key>
+      <dict>
+        <key>name</key>
+        <string>constant.language.undefined.dw</string>
+        <key>match</key>
+        <string>\?\?\?</string>
+      </dict>
       <key>qstring-double</key>
       <dict>
         <key>begin</key>
@@ -1496,57 +1507,6 @@
             <string>#comments</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>support.class.dw</string>
-            <key>match</key>
-            <string>\b(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)\b</string>
-          </dict>
-          <dict>
-            <key>begin</key>
-            <string>\b(Array|Type)\s*&lt;\b</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>support.type.dw</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>&gt;</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>match</key>
-                <string>,</string>
-                <key>name</key>
-                <string>invalid</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#types</string>
-              </dict>
-            </array>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.declaration.dw</string>
-            <key>match</key>
-            <string>(&amp;|\|)</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.declaration.dw</string>
-            <key>match</key>
-            <string>&lt;:</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>support.class.dw</string>
-            <key>match</key>
-            <string>\b([A-Z][a-zA-Z0-9_]*)</string>
-          </dict>
-          <dict>
             <key>begin</key>
             <string>&lt;</string>
             <key>end</key>
@@ -1564,31 +1524,6 @@
               <dict>
                 <key>include</key>
                 <string>#comments</string>
-              </dict>
-            </array>
-          </dict>
-          <dict>
-            <key>begin</key>
-            <string>\(</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.operator.tuple.dw</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>(\)\s*\-\&gt;)</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#types</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#parameters</string>
               </dict>
             </array>
           </dict>
@@ -1662,24 +1597,91 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>\(</string>
+            <string>(\()</string>
             <key>beginCaptures</key>
             <dict>
-              <key>1</key>
+              <key>0</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.grouping.dw</string>
               </dict>
             </dict>
             <key>end</key>
-            <string>\)</string>
+            <string>(\)\s*-&gt;|\))</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.grouping.dw</string>
+              </dict>
+            </dict>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
                 <string>#types</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#parameters</string>
+              </dict>
             </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>support.class.dw</string>
+            <key>match</key>
+            <string>(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)</string>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(Array|Type)\s*&lt;</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>support.type.dw</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>&gt;</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>match</key>
+                <string>,</string>
+                <key>name</key>
+                <string>invalid</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#types</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.declaration.dw</string>
+            <key>match</key>
+            <string>(&amp;|\|)</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.declaration.dw</string>
+            <key>match</key>
+            <string>&lt;:</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>support.class.dw</string>
+            <key>match</key>
+            <string>\b([A-Z][a-zA-Z0-9_]*)</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#undefined-fun-character</string>
           </dict>
           <dict>
             <key>match</key>
@@ -2095,7 +2097,7 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>storage.type.dw</string>
+            <string>storage.type.annotation.dw</string>
           </dict>
           <key>3</key>
           <dict>
@@ -2141,7 +2143,7 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>storage.type.dw</string>
+            <string>storage.type.annotation.dw</string>
           </dict>
           <key>3</key>
           <dict>
