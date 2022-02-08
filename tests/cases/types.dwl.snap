@@ -146,12 +146,12 @@
 #       ^ source.data-weave meta.directive.type.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #         ^^^^^^ source.data-weave meta.directive.type.dw
-#               ^ source.data-weave meta.directive.type.dw
+#               ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                ^^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #                   ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                    ^ source.data-weave meta.directive.type.dw
 #                     ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
-#                           ^^^^ source.data-weave meta.directive.type.dw
+#                           ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                               ^ source.data-weave meta.directive.type.dw
 #                                ^ source.data-weave meta.directive.type.dw support.class.dw
 #                                 ^ source.data-weave meta.directive.type.dw
@@ -165,9 +165,9 @@
 #       ^ source.data-weave meta.directive.type.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #         ^^^^^^ source.data-weave meta.directive.type.dw
-#               ^ source.data-weave meta.directive.type.dw
+#               ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
-#                      ^^^^ source.data-weave meta.directive.type.dw
+#                      ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                          ^ source.data-weave meta.directive.type.dw
 #                           ^ source.data-weave meta.directive.type.dw support.class.dw
 #                            ^ source.data-weave meta.directive.type.dw
@@ -481,12 +481,12 @@
 #  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
-#       ^ source.data-weave meta.directive.type.dw
+#       ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #        ^^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #            ^ source.data-weave meta.directive.type.dw
 #             ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
-#                   ^^^^ source.data-weave meta.directive.type.dw
+#                   ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                       ^ source.data-weave meta.directive.type.dw
 #                        ^ source.data-weave meta.directive.type.dw support.class.dw
 #                         ^ source.data-weave meta.directive.type.dw
@@ -499,7 +499,7 @@
 #  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
-#       ^ source.data-weave meta.directive.type.dw
+#       ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #        ^^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #            ^ source.data-weave meta.directive.type.dw
@@ -509,7 +509,7 @@
 #                          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                           ^ source.data-weave meta.directive.type.dw
 #                            ^ source.data-weave meta.directive.type.dw support.class.dw
-#                             ^^^^ source.data-weave meta.directive.type.dw
+#                             ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                                 ^ source.data-weave meta.directive.type.dw
 #                                  ^^^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                                     ^ source.data-weave meta.directive.type.dw
@@ -528,8 +528,8 @@
 #  ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #         ^ source.data-weave meta.directive.type.dw
-#          ^ source.data-weave meta.directive.type.dw
-#           ^^^^ source.data-weave meta.directive.type.dw
+#          ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
+#           ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #               ^ source.data-weave meta.directive.type.dw
 #                ^ source.data-weave meta.directive.type.dw
 #                 ^ source.data-weave meta.directive.type.dw
@@ -641,8 +641,8 @@
 #  ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #      ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #       ^ source.data-weave meta.directive.type.dw
-#        ^ source.data-weave meta.directive.type.dw
-#         ^^^^ source.data-weave meta.directive.type.dw
+#        ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
+#         ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #             ^ source.data-weave meta.directive.type.dw
 #              ^ source.data-weave meta.directive.type.dw support.class.dw
 #               ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
@@ -651,8 +651,8 @@
 #  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
-#       ^ source.data-weave meta.directive.type.dw
-#        ^^^^ source.data-weave meta.directive.type.dw
+#       ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
+#        ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #            ^ source.data-weave meta.directive.type.dw
 #             ^ source.data-weave meta.directive.type.dw support.class.dw
 #              ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
@@ -661,12 +661,12 @@
 #  ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #      ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #       ^ source.data-weave meta.directive.type.dw
-#        ^ source.data-weave meta.directive.type.dw
+#        ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #         ^^^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #             ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #              ^ source.data-weave meta.directive.type.dw
 #               ^ source.data-weave meta.directive.type.dw support.class.dw
-#                ^^^^ source.data-weave meta.directive.type.dw
+#                ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                    ^ source.data-weave meta.directive.type.dw
 #                     ^ source.data-weave meta.directive.type.dw support.class.dw
 #                      ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
@@ -675,12 +675,12 @@
 #  ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.type.dw
-#            ^ source.data-weave meta.directive.type.dw
+#            ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #             ^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #               ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                ^ source.data-weave meta.directive.type.dw
 #                 ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
-#                       ^^^^ source.data-weave meta.directive.type.dw
+#                       ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                           ^ source.data-weave meta.directive.type.dw
 #                            ^ source.data-weave meta.directive.type.dw support.class.dw
 #                             ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
@@ -689,12 +689,12 @@
 #  ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
-#         ^ source.data-weave meta.directive.type.dw
+#         ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #          ^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #            ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #             ^ source.data-weave meta.directive.type.dw
 #              ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
-#                    ^^^^ source.data-weave meta.directive.type.dw
+#                    ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                        ^ source.data-weave meta.directive.type.dw
 #                         ^ source.data-weave meta.directive.type.dw support.class.dw
 #                          ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
@@ -703,7 +703,7 @@
 #  ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
-#         ^ source.data-weave meta.directive.type.dw
+#         ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #          ^^ source.data-weave meta.directive.type.dw variable.parameter.dw
 #            ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #             ^ source.data-weave meta.directive.type.dw
@@ -713,7 +713,7 @@
 #                          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                           ^ source.data-weave meta.directive.type.dw
 #                            ^ source.data-weave meta.directive.type.dw support.class.dw
-#                             ^^^^ source.data-weave meta.directive.type.dw
+#                             ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #                                 ^ source.data-weave meta.directive.type.dw
 #                                  ^ source.data-weave meta.directive.type.dw support.class.dw
 #                                   ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
@@ -729,8 +729,8 @@
 #  ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
-#         ^ source.data-weave meta.directive.type.dw
-#          ^^^^ source.data-weave meta.directive.type.dw
+#         ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
+#          ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #              ^ source.data-weave meta.directive.type.dw
 #               ^^^^^ source.data-weave meta.directive.type.dw support.type.dw
 #                    ^ source.data-weave meta.directive.type.dw
@@ -742,8 +742,8 @@
 #  ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #         ^ source.data-weave meta.directive.type.dw
-#          ^ source.data-weave meta.directive.type.dw
-#           ^^^^ source.data-weave meta.directive.type.dw
+#          ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
+#           ^^^^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
 #               ^ source.data-weave meta.directive.type.dw
 #                ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 >}
@@ -812,11 +812,11 @@
 #                    ^^ source.data-weave meta.directive.fun.dw
 #                      ^^^^^^^^ source.data-weave meta.directive.fun.dw variable.parameter.dw
 #                              ^ source.data-weave meta.directive.fun.dw keyword.operator.declaration.dw
-#                               ^ source.data-weave meta.directive.fun.dw
+#                               ^ source.data-weave meta.directive.fun.dw keyword.operator.grouping.dw
 #                                ^^^^^^^ source.data-weave meta.directive.fun.dw support.class.dw
 #                                       ^ source.data-weave meta.directive.fun.dw
 #                                        ^^^^^^^ source.data-weave meta.directive.fun.dw support.class.dw
-#                                               ^^^^ source.data-weave meta.directive.fun.dw
+#                                               ^^^^ source.data-weave meta.directive.fun.dw keyword.operator.grouping.dw
 #                                                   ^ source.data-weave meta.directive.fun.dw
 #                                                    ^^^ source.data-weave meta.directive.fun.dw support.class.dw
 #                                                       ^ source.data-weave meta.directive.fun.dw
