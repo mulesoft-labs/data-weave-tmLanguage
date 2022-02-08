@@ -638,11 +638,11 @@ repository:
     - match: (,)
     - match: (\*)
       name: entity.name.type.dw
-    - match: \b(from)\s+
+    - match: \s+(from)\s+
       captures:
         '1': {name: keyword.control.from}
     - match: |
-        (?:[a-zA-Z][a-zA-Z0-9]*(?:::[a-zA-Z][a-zA-Z0-9]*))
+        (?:[a-zA-Z][a-zA-Z0-9]*(?:::[a-zA-Z][a-zA-Z0-9]*)+)
       name: entity.name.type.dw
     - match: |
         (?:[a-zA-Z][a-zA-Z0-9]*)

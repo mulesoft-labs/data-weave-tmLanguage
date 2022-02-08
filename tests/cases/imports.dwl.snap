@@ -5,16 +5,15 @@
 #        ^ source.data-weave meta.directive.import.dw
 #         ^^^^ source.data-weave meta.directive.import.dw keyword.control.from
 #             ^ source.data-weave meta.directive.import.dw
-#              ^^^^ source.data-weave meta.directive.import.dw
-#                  ^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
+#              ^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
 >import spread from dw::core::Object
 #^^^^^^ source.data-weave meta.directive.import.dw keyword.control.import
 #      ^ source.data-weave meta.directive.import.dw
-#       ^^^^^^^ source.data-weave meta.directive.import.dw
+#       ^^^^^^ source.data-weave meta.directive.import.dw
+#             ^ source.data-weave meta.directive.import.dw
 #              ^^^^ source.data-weave meta.directive.import.dw keyword.control.from
 #                  ^ source.data-weave meta.directive.import.dw
-#                   ^^^^ source.data-weave meta.directive.import.dw
-#                       ^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
+#                   ^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
 >import spread as SPREAD from dw::core::Object
 #^^^^^^ source.data-weave meta.directive.import.dw keyword.control.import
 #      ^ source.data-weave meta.directive.import.dw
@@ -26,8 +25,7 @@
 #                       ^ source.data-weave meta.directive.import.dw
 #                        ^^^^ source.data-weave meta.directive.import.dw keyword.control.from
 #                            ^ source.data-weave meta.directive.import.dw
-#                             ^^^^ source.data-weave meta.directive.import.dw
-#                                 ^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
+#                             ^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
 >import spread as SPREAD1, b, C, a as D from dw::core::Object
 #^^^^^^ source.data-weave meta.directive.import.dw keyword.control.import
 #      ^ source.data-weave meta.directive.import.dw
@@ -49,8 +47,7 @@
 #                                      ^ source.data-weave meta.directive.import.dw
 #                                       ^^^^ source.data-weave meta.directive.import.dw keyword.control.from
 #                                           ^ source.data-weave meta.directive.import.dw
-#                                            ^^^^ source.data-weave meta.directive.import.dw
-#                                                ^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
+#                                            ^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.import.dw entity.name.type.dw
 >import dw::core::Object as OBJEKT
 #^^^^^^ source.data-weave meta.directive.import.dw keyword.control.import
 #      ^ source.data-weave meta.directive.import.dw
