@@ -460,9 +460,28 @@
 #                     ^ source.data-weave meta.directive.type.dw
 #                      ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
-#                            ^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw
-#                                           ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
-#                                                 ^ source.data-weave meta.directive.type.dw
+#                            ^ source.data-weave meta.directive.type.dw
+#                             ^ source.data-weave meta.directive.type.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+#                              ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                               ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                 ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                  ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                   ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                    ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                     ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                      ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                       ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                        ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                         ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                          ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                           ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                            ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                             ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                              ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                               ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                                ^ source.data-weave meta.directive.type.dw string.quoted.double.dw
+#                                                 ^ source.data-weave meta.directive.type.dw string.quoted.double.dw punctuation.definition.string.end.dw
 #                                                  ^ source.data-weave meta.directive.type.dw
 >
 >type IHashMap<T> = {

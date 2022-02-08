@@ -511,6 +511,11 @@ repository:
   types:
     patterns:
     - include: '#comments'
+    - name: constant.language.dw
+      match: \b(true|false|null)\b
+    - name: constant.numeric.dw
+      match: \b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?\b
+    - include: '#strings'
     - begin: <
       end: '>'
       patterns:
