@@ -46,7 +46,7 @@
 #     ^ source.data-weave meta.directive.var.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.var.dw
 #       ^ source.data-weave meta.directive.var.dw
-#        ^ source.data-weave meta.directive.var.dw meta.object.member.dw
+#        ^ source.data-weave meta.directive.var.dw variable.object.member.dw
 #         ^ source.data-weave meta.directive.var.dw keyword.operator.optional.dw
 #          ^ source.data-weave meta.directive.var.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.var.dw

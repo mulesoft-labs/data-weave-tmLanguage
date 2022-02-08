@@ -70,11 +70,11 @@
 #                            ^^^^^^ source.data-weave meta.array.literal.dw meta.array.literal.dw support.function.dw
 #                                  ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw punctuation.definition.block.dw
 #                                   ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw
-#                                    ^^^^^^^^^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw meta.object.member.dw
-#                                             ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
-#                                              ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw meta.object.member.dw
-#                                               ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw meta.object.member.dw constant.numeric.dw
-#                                                ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw meta.object.member.dw
+#                                    ^^^^^^^^^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw variable.object.member.dw
+#                                             ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw variable.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+#                                              ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw variable.object.member.dw
+#                                               ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw variable.object.member.dw constant.numeric.dw
+#                                                ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw variable.object.member.dw
 #                                                 ^ source.data-weave meta.array.literal.dw meta.array.literal.dw meta.objectliteral.dw punctuation.definition.block.dw
 #                                                  ^^ source.data-weave meta.array.literal.dw meta.array.literal.dw
 >	],

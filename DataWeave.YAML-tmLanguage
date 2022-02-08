@@ -321,12 +321,12 @@ repository:
     begin: (?<![\[\(:+*/\-])(\s*\.\.\*|\s*\.\.|\s*\.\*|\s*\.\@|\s*\.#|\s*\.&|\s*\.|(?=\[)|\:\:)
     end: (?=\s|,|\}|\)|\n|\]|\(|-|$)
     patterns:
-      - name: meta.object.member.dw
+      - name: variable.object.member.dw
         match: \b([[:alpha:]][_[:alnum:]]+#)
         captures:
           '0': {name: variable.language.dw}
       - match: ((?:[A-Za-z])([a-zA-Z0-9_]*)[?!]?|(\$)+)
-        name: meta.object.member.dw
+        name: variable.object.member.dw
       - include: '#strings'
       - begin: (\[(@|\^)?)
         end: (\])
@@ -338,16 +338,16 @@ repository:
 
   object-key:
     patterns:
-    - name: meta.object.member.dw meta.object-literal.namespace.dw
+    - name: variable.object.member.dw meta.object-literal.namespace.dw
       match: \b([[:alpha:]][_[:alnum:]]+#)
       captures:
         '0': {name: variable.language.dw}
-    - name: meta.object.member.dw meta.object-literal.key.dw
+    - name: variable.object.member.dw meta.object-literal.key.dw
       begin: (?=[\'\"\`])
       end: (?=@\(|:)
       patterns:
       - include: '#strings'
-    - name: meta.object.member.dw
+    - name: variable.object.member.dw
       end: (?=,|\}|\))
       match: (?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=:|@\()
       captures:
@@ -364,7 +364,7 @@ repository:
     - include: '#punctuation-comma'
 
   object-member-body:
-    name: meta.object.member.dw
+    name: variable.object.member.dw
     begin: ':'
     beginCaptures:
       '0': {name: meta.object-literal.key.dw punctuation.separator.key-value.dw}
@@ -547,7 +547,7 @@ repository:
       - include: '#types'
       - include: '#parameters'
     - name: support.class.dw
-      match: (String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)
+      match: (String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|TimeZone|Time|Period|Binary|Null|Regex|Nothing|Any|Object|Key)
     - begin: (Array|Type)\s*<
       beginCaptures:
         '1': {name: support.type.dw}
@@ -582,7 +582,7 @@ repository:
     - match: \(\s*([a-zA-Z][a-zA-Z0-9]*)\s*\)
       name: entity.name.type.dw
     - match: ([a-zA-Z][a-zA-Z0-9]*)
-      name: meta.object.member.dw
+      name: variable.object.member.dw
     - include: '#strings'
     - match: '\?'
       name: keyword.operator.optional.dw

@@ -37,7 +37,7 @@
 #                   ^ source.data-weave meta.directive.type.dw
 >  headers?: HttpHeaders,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #         ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.type.dw
@@ -45,7 +45,7 @@
 #                       ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  method?: String,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #         ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #          ^ source.data-weave meta.directive.type.dw
@@ -53,14 +53,14 @@
 #                 ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  url: String,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
 #       ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #             ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  allowRedirect?: Boolean,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #               ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #                ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                 ^ source.data-weave meta.directive.type.dw
@@ -68,7 +68,7 @@
 #                         ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  body?: String
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #      ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
@@ -86,16 +86,16 @@
 #               ^ source.data-weave meta.directive.type.dw
 >  headers @(name: String, age?: Number): HttpHeaders,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #         ^ source.data-weave meta.directive.type.dw
 #          ^^ source.data-weave meta.directive.type.dw keyword.operator.attributes.dw
-#            ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#            ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                 ^ source.data-weave meta.directive.type.dw
 #                  ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                        ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                         ^ source.data-weave meta.directive.type.dw
-#                          ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                          ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                             ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #                              ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                               ^ source.data-weave meta.directive.type.dw
@@ -107,16 +107,16 @@
 #                                                    ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  foo @(name: String, age: Number)?: HttpHeaders
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw
 #      ^^ source.data-weave meta.directive.type.dw keyword.operator.attributes.dw
-#        ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#        ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #            ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #             ^ source.data-weave meta.directive.type.dw
 #              ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                    ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                     ^ source.data-weave meta.directive.type.dw
-#                      ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                      ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                         ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                          ^ source.data-weave meta.directive.type.dw
 #                           ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -185,7 +185,7 @@
 >                  ns0#root:
 #^^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw
 #                  ^^^^ source.data-weave meta.directive.type.dw variable.language.dw
-#                      ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                      ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 >                      {
 #^^^^^^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw
@@ -193,7 +193,7 @@
 >                        ns0#name: String,
 #^^^^^^^^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw
 #                        ^^^^ source.data-weave meta.directive.type.dw variable.language.dw
-#                            ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                            ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                 ^ source.data-weave meta.directive.type.dw
 #                                  ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -201,7 +201,7 @@
 >                        ns0#lastName: String
 #^^^^^^^^^^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw
 #                        ^^^^ source.data-weave meta.directive.type.dw variable.language.dw
-#                            ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                            ^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                    ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                     ^ source.data-weave meta.directive.type.dw
 #                                      ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -221,13 +221,13 @@
 #            ^ source.data-weave meta.directive.type.dw
 #             ^^ source.data-weave meta.directive.type.dw
 #               ^ source.data-weave meta.directive.type.dw
-#                ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                    ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                     ^ source.data-weave meta.directive.type.dw
 #                      ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                            ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                             ^ source.data-weave meta.directive.type.dw
-#                              ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                              ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                 ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                  ^ source.data-weave meta.directive.type.dw
 #                                   ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -242,13 +242,13 @@
 #              ^ source.data-weave meta.directive.type.dw
 #               ^^ source.data-weave meta.directive.type.dw
 #                 ^ source.data-weave meta.directive.type.dw
-#                  ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                  ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                      ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                       ^ source.data-weave meta.directive.type.dw
 #                        ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                              ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                               ^ source.data-weave meta.directive.type.dw
-#                                ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                   ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                    ^ source.data-weave meta.directive.type.dw
 #                                     ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -263,13 +263,13 @@
 #                   ^ source.data-weave meta.directive.type.dw
 #                    ^^^ source.data-weave meta.directive.type.dw
 #                       ^ source.data-weave meta.directive.type.dw
-#                        ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                        ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                            ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                             ^ source.data-weave meta.directive.type.dw
 #                              ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                    ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                     ^ source.data-weave meta.directive.type.dw
-#                                      ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                      ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                         ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                          ^ source.data-weave meta.directive.type.dw
 #                                           ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -283,19 +283,19 @@
 #                    ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #                     ^ source.data-weave meta.directive.type.dw
 #                      ^ source.data-weave meta.directive.type.dw
-#                       ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                       ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                            ^ source.data-weave meta.directive.type.dw
 #                             ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                   ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                    ^ source.data-weave meta.directive.type.dw
-#                                     ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                     ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                        ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                         ^ source.data-weave meta.directive.type.dw
 #                                          ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                                ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                                 ^ source.data-weave meta.directive.type.dw
-#                                                  ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                                  ^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                                        ^ source.data-weave meta.directive.type.dw
 #                                                         ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #                                                          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
@@ -311,19 +311,19 @@
 #                            ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #                             ^ source.data-weave meta.directive.type.dw
 #                              ^ source.data-weave meta.directive.type.dw
-#                               ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                               ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                   ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                    ^ source.data-weave meta.directive.type.dw
 #                                     ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                           ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                            ^ source.data-weave meta.directive.type.dw
-#                                             ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                             ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                                ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                                 ^ source.data-weave meta.directive.type.dw
 #                                                  ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                                        ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                                         ^ source.data-weave meta.directive.type.dw
-#                                                          ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                                          ^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                                                ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #                                                                 ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                                                  ^ source.data-weave meta.directive.type.dw
@@ -331,7 +331,7 @@
 #                                                                         ^ source.data-weave meta.directive.type.dw
 #                                                                          ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                                                           ^ source.data-weave meta.directive.type.dw
-#                                                                            ^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                                                            ^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                                                                   ^ source.data-weave meta.directive.type.dw
 #                                                                                    ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #                                                                                     ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
@@ -348,14 +348,14 @@
 #                   ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #                    ^ source.data-weave meta.directive.type.dw
 #                     ^ source.data-weave meta.directive.type.dw
-#                      ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                      ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                          ^ source.data-weave meta.directive.type.dw keyword.operator.optional.dw
 #                           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                            ^ source.data-weave meta.directive.type.dw
 #                             ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                                   ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                    ^ source.data-weave meta.directive.type.dw
-#                                     ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                     ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                        ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                         ^ source.data-weave meta.directive.type.dw
 #                                          ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -369,13 +369,13 @@
 #          ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #           ^ source.data-weave meta.directive.type.dw
 #            ^ source.data-weave meta.directive.type.dw
-#             ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#             ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                 ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                  ^ source.data-weave meta.directive.type.dw
 #                   ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                         ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                          ^ source.data-weave meta.directive.type.dw
-#                           ^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                           ^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                  ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                   ^ source.data-weave meta.directive.type.dw
 #                                    ^^^^^ source.data-weave meta.directive.type.dw support.type.dw
@@ -384,7 +384,7 @@
 #                                              ^ source.data-weave meta.directive.type.dw
 #                                               ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                                                ^ source.data-weave meta.directive.type.dw
-#                                                 ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                                                 ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                                      ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                                       ^ source.data-weave meta.directive.type.dw
 #                                                        ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -397,12 +397,12 @@
 #          ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #           ^ source.data-weave meta.directive.type.dw
 #            ^ source.data-weave meta.directive.type.dw
-#             ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#             ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                 ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                  ^ source.data-weave meta.directive.type.dw
 #                   ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                         ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
-#                          ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                          ^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                  ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                   ^ source.data-weave meta.directive.type.dw
 #                                    ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -437,13 +437,13 @@
 #             ^ source.data-weave meta.directive.type.dw keyword.other.dw
 #              ^ source.data-weave meta.directive.type.dw
 #               ^ source.data-weave meta.directive.type.dw
-#                ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                      ^ source.data-weave meta.directive.type.dw
 #                       ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                             ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 #                              ^ source.data-weave meta.directive.type.dw
-#                               ^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                               ^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                                 ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                                  ^ source.data-weave meta.directive.type.dw
 #                                   ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -458,7 +458,7 @@
 #              ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                    ^ source.data-weave meta.directive.type.dw
 #                     ^ source.data-weave meta.directive.type.dw
-#                      ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#                      ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #                           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #                            ^^^^^^^^^^^^^^^ source.data-weave meta.directive.type.dw
 #                                           ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -478,7 +478,7 @@
 #                   ^ source.data-weave meta.directive.type.dw
 >  get: (key: String) -> T | Null,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -496,7 +496,7 @@
 #                                ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  set: (key: String, value: T) -> HashMapSetOperation<T>,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -518,14 +518,14 @@
 #                                                        ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  instance: Any,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.type.dw
 #            ^^^ source.data-weave meta.directive.type.dw support.class.dw
 #               ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  getAll: () -> { _?: T }
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #         ^ source.data-weave meta.directive.type.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -556,14 +556,14 @@
 #                              ^^ source.data-weave meta.directive.type.dw
 >  operation: String,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #            ^ source.data-weave meta.directive.type.dw
 #             ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
 #                   ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  prevValue: T | Null & Dsa,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #           ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #            ^ source.data-weave meta.directive.type.dw
 #             ^ source.data-weave meta.directive.type.dw support.class.dw
@@ -578,14 +578,14 @@
 #                           ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  newValue: T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.type.dw
 #            ^ source.data-weave meta.directive.type.dw support.class.dw
 #             ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  key: String
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
 #       ^^^^^^ source.data-weave meta.directive.type.dw support.class.dw
@@ -638,7 +638,7 @@
 #                      ^ source.data-weave meta.directive.type.dw
 >  peek: () -> T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #      ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #       ^ source.data-weave meta.directive.type.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -648,7 +648,7 @@
 #               ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  pop: () -> T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #     ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #      ^ source.data-weave meta.directive.type.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -658,7 +658,7 @@
 #              ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  push: (item: T) -> T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #      ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #       ^ source.data-weave meta.directive.type.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -672,7 +672,7 @@
 #                      ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  removeAt: (at: Number) -> T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.type.dw
 #            ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -686,7 +686,7 @@
 #                             ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  getAt: (at: Number) -> T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
 #         ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -700,7 +700,7 @@
 #                          ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  setAt: (at: Number, item: T) -> T,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
 #         ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -719,14 +719,14 @@
 #                                   ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  instance: Any,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #           ^ source.data-weave meta.directive.type.dw
 #            ^^^ source.data-weave meta.directive.type.dw support.class.dw
 #               ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  items: () -> Array<T>,
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #       ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #        ^ source.data-weave meta.directive.type.dw
 #         ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -739,7 +739,7 @@
 #                       ^ source.data-weave meta.directive.type.dw punctuation.separator.comma.dw
 >  length: () -> Number
 #^^ source.data-weave meta.directive.type.dw
-#  ^^^^^^ source.data-weave meta.directive.type.dw meta.object.member.dw
+#  ^^^^^^ source.data-weave meta.directive.type.dw variable.object.member.dw
 #        ^ source.data-weave meta.directive.type.dw keyword.operator.declaration.dw
 #         ^ source.data-weave meta.directive.type.dw
 #          ^ source.data-weave meta.directive.type.dw keyword.operator.grouping.dw
@@ -847,44 +847,44 @@
 #                                      ^ source.data-weave meta.objectliteral.dw punctuation.definition.block.dw
 >   email: "$(user.name).$(user.lastName)@mulesoft.com",
 #^^^ source.data-weave meta.objectliteral.dw
-#   ^^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#        ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
-#         ^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#          ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
-#           ^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
-#             ^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw variable.other.dw
-#                 ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave
-#                  ^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave meta.object.member.dw
-#                      ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
-#                       ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                        ^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
-#                          ^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw variable.other.dw
-#                              ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave
-#                               ^^^^^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw meta.selector.data-weave meta.object.member.dw
-#                                       ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.template.expression.dw keyword.other.dw
-#                                        ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                         ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                          ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                           ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                            ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                             ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                              ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                               ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                                ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                                 ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                                  ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                                   ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                                    ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                                     ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
+#   ^^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#        ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+#         ^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#          ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+#           ^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw keyword.other.dw
+#             ^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw variable.other.dw
+#                 ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw meta.selector.data-weave
+#                  ^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw meta.selector.data-weave variable.object.member.dw
+#                      ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw keyword.other.dw
+#                       ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                        ^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw keyword.other.dw
+#                          ^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw variable.other.dw
+#                              ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw meta.selector.data-weave
+#                               ^^^^^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw meta.selector.data-weave variable.object.member.dw
+#                                       ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.template.expression.dw keyword.other.dw
+#                                        ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                         ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                          ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                           ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                            ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                             ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                              ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                               ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                                ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                                 ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                                  ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                                   ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                                    ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                                     ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
 #                                                      ^ source.data-weave meta.objectliteral.dw punctuation.separator.comma.dw
 >   id: user.name
 #^^^ source.data-weave meta.objectliteral.dw
-#   ^^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#     ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
-#      ^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#       ^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw variable.other.dw
-#           ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave
-#            ^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.selector.data-weave meta.object.member.dw
+#   ^^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#     ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+#      ^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#       ^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw variable.other.dw
+#           ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.selector.data-weave
+#            ^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.selector.data-weave variable.object.member.dw
 >}
 #^ source.data-weave meta.objectliteral.dw punctuation.definition.block.dw
 >---
@@ -893,31 +893,31 @@
 #^^^^^^^^^ source.data-weave variable.other.dw
 #         ^ source.data-weave punctuation.expression.begin.dw
 #          ^ source.data-weave meta.objectliteral.dw punctuation.definition.block.dw
-#           ^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#               ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
-#                ^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#                 ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
-#                  ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                   ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                    ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                     ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                      ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                       ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                        ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                         ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
+#           ^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#               ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+#                ^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#                 ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+#                  ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                   ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                    ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                     ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                      ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                       ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                        ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                         ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
 #                          ^ source.data-weave meta.objectliteral.dw punctuation.separator.comma.dw
 #                           ^ source.data-weave meta.objectliteral.dw
-#                            ^^^^^^^^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#                                    ^ source.data-weave meta.objectliteral.dw meta.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
-#                                     ^ source.data-weave meta.objectliteral.dw meta.object.member.dw
-#                                      ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
-#                                       ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                        ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                         ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                          ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                           ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                            ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                             ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw
-#                                              ^ source.data-weave meta.objectliteral.dw meta.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
+#                            ^^^^^^^^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#                                    ^ source.data-weave meta.objectliteral.dw variable.object.member.dw meta.object-literal.key.dw punctuation.separator.key-value.dw
+#                                     ^ source.data-weave meta.objectliteral.dw variable.object.member.dw
+#                                      ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw punctuation.definition.string.begin.dw
+#                                       ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                        ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                         ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                          ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                           ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                            ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                             ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw
+#                                              ^ source.data-weave meta.objectliteral.dw variable.object.member.dw string.quoted.double.dw punctuation.definition.string.end.dw
 #                                               ^ source.data-weave meta.objectliteral.dw punctuation.definition.block.dw
 #                                                ^ source.data-weave punctuation.expression.end.dw

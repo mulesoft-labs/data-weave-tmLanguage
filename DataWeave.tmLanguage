@@ -940,7 +940,7 @@
         <array>
           <dict>
             <key>name</key>
-            <string>meta.object.member.dw</string>
+            <string>variable.object.member.dw</string>
             <key>match</key>
             <string>\b([[:alpha:]][_[:alnum:]]+#)</string>
             <key>captures</key>
@@ -956,7 +956,7 @@
             <key>match</key>
             <string>((?:[A-Za-z])([a-zA-Z0-9_]*)[?!]?|(\$)+)</string>
             <key>name</key>
-            <string>meta.object.member.dw</string>
+            <string>variable.object.member.dw</string>
           </dict>
           <dict>
             <key>include</key>
@@ -993,7 +993,7 @@
         <array>
           <dict>
             <key>name</key>
-            <string>meta.object.member.dw meta.object-literal.namespace.dw</string>
+            <string>variable.object.member.dw meta.object-literal.namespace.dw</string>
             <key>match</key>
             <string>\b([[:alpha:]][_[:alnum:]]+#)</string>
             <key>captures</key>
@@ -1007,7 +1007,7 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>meta.object.member.dw meta.object-literal.key.dw</string>
+            <string>variable.object.member.dw meta.object-literal.key.dw</string>
             <key>begin</key>
             <string>(?=[\'\"\`])</string>
             <key>end</key>
@@ -1022,7 +1022,7 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>meta.object.member.dw</string>
+            <string>variable.object.member.dw</string>
             <key>end</key>
             <string>(?=,|\}|\))</string>
             <key>match</key>
@@ -1073,7 +1073,7 @@
       <key>object-member-body</key>
       <dict>
         <key>name</key>
-        <string>meta.object.member.dw</string>
+        <string>variable.object.member.dw</string>
         <key>begin</key>
         <string>:</string>
         <key>beginCaptures</key>
@@ -1632,7 +1632,7 @@
             <key>name</key>
             <string>support.class.dw</string>
             <key>match</key>
-            <string>(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|Time|TimeZone|Period|Binary|Null|Regex|Nothing|Any|Object|Key)</string>
+            <string>(String|Boolean|Number|Range|Namespace|Uri|DateTime|LocalDateTime|Date|LocalTime|TimeZone|Time|Period|Binary|Null|Regex|Nothing|Any|Object|Key)</string>
           </dict>
           <dict>
             <key>begin</key>
@@ -1737,7 +1737,7 @@
             <key>match</key>
             <string>([a-zA-Z][a-zA-Z0-9]*)</string>
             <key>name</key>
-            <string>meta.object.member.dw</string>
+            <string>variable.object.member.dw</string>
           </dict>
           <dict>
             <key>include</key>
