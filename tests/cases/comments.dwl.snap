@@ -1,11 +1,11 @@
 >import * from x
-#^^^^^^ source.data-weave meta.directive.import.dw storage.type.dw
+#^^^^^^ source.data-weave meta.directive.import.dw keyword.control.import
 #      ^ source.data-weave meta.directive.import.dw
-#       ^ source.data-weave meta.directive.import.dw
+#       ^ source.data-weave meta.directive.import.dw entity.name.type.dw
 #        ^ source.data-weave meta.directive.import.dw
-#         ^^^^ source.data-weave meta.directive.import.dw storage.type.dw
+#         ^^^^ source.data-weave meta.directive.import.dw keyword.control.from
 #             ^ source.data-weave meta.directive.import.dw
-#              ^^ source.data-weave meta.directive.import.dw entity.name.other.dw
+#              ^^ source.data-weave meta.directive.import.dw entity.name.function.dw
 >// my comment
 #^^ source.data-weave comment.line.double-slash.dw punctuation.definition.comment.dw
 #  ^^^^^^^^^^^^ source.data-weave comment.line.double-slash.dw
