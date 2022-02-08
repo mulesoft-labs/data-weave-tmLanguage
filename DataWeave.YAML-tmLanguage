@@ -630,23 +630,27 @@ repository:
   import-directive:
     name: meta.directive.import.dw
     begin: (\s*(import)\s+)
-    end: (?=(fun|input|output|type|var|ns|import|%dw|private|---)\s|$)
+    end: (?=(fun|input|output|type|var|ns|import|%dw|private|annotation|\@|---)\s|$)
     beginCaptures:
-      '2': {name: storage.type.dw}
+      '2': {name: keyword.control.import}
     patterns:
     - include: '#comments'
     - match: (,)
     - match: (\*)
+      name: entity.name.type.dw
     - match: \b(from)\s+
       captures:
-        '1': {name: storage.type.dw}
+        '1': {name: keyword.control.from}
     - match: |
-        (?:[a-zA-Z][a-zA-Z0-9]*(?:::[a-zA-Z][a-zA-Z0-9]*)*)
-      name: entity.name.other.dw
+        (?:[a-zA-Z][a-zA-Z0-9]*(?:::[a-zA-Z][a-zA-Z0-9]*))
+      name: entity.name.type.dw
+    - match: |
+        (?:[a-zA-Z][a-zA-Z0-9]*)
+      name: entity.name.function.dw
     - match: \s+(as)\s+([a-zA-Z][a-zA-Z0-9]*)
       captures:
-        '1': {name: keyword.other.dw}
-        '2': {name: entity.name.other.dw}
+        '1': {name: keyword.control.as}
+        '2': {name: entity.name.function.dw}
 
 
   var-directive:
