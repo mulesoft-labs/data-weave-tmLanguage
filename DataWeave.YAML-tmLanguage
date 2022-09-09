@@ -28,13 +28,13 @@ repository:
     - include: '#annotation-usage'
     - include: '#annotation-directive'
 
-  function_call:
-    name: function_call
-    begin: \s*\(
-    end: \s*\)
+  type_parameters:
+    begin: <
+    end: '>'
     patterns:
+    - include: '#types'
     - include: '#punctuation-comma'
-    - include: '#expressions'
+    - include: '#comments'
 
   variable-reference:
     patterns:
@@ -151,6 +151,7 @@ repository:
     - include: '#do-statement'
     - include: '#if-statement'
     - include: '#regex'
+    - include: '#type_parameters'
     - include: '#keywords'
     - include: '#object-literal'
     - include: '#array-literal'

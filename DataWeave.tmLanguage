@@ -87,23 +87,25 @@
           </dict>
         </array>
       </dict>
-      <key>function_call</key>
+      <key>type_parameters</key>
       <dict>
-        <key>name</key>
-        <string>function_call</string>
         <key>begin</key>
-        <string>\s*\(</string>
+        <string>&lt;</string>
         <key>end</key>
-        <string>\s*\)</string>
+        <string>&gt;</string>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>include</key>
+            <string>#types</string>
+          </dict>
           <dict>
             <key>include</key>
             <string>#punctuation-comma</string>
           </dict>
           <dict>
             <key>include</key>
-            <string>#expressions</string>
+            <string>#comments</string>
           </dict>
         </array>
       </dict>
@@ -454,6 +456,10 @@
           <dict>
             <key>include</key>
             <string>#regex</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type_parameters</string>
           </dict>
           <dict>
             <key>include</key>
