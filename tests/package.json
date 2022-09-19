@@ -5,8 +5,8 @@
   "description": "",
   "main": "test.ts",
   "scripts": {
-    "updateSnapshot": "vscode-tmgrammar-snap -s source.data-weave -g ../DataWeave.tmLanguage -t 'cases/*.dwl' --updateSnapshot",
-    "test": "vscode-tmgrammar-snap -s source.data-weave -g ../DataWeave.tmLanguage -t 'cases/*.dwl'"
+    "updateSnapshot": "vscode-tmgrammar-snap -s source.data-weave -g ../DataWeave.tmLanguage 'cases/*.dwl' --updateSnapshot",
+    "test": "vscode-tmgrammar-snap -s source.data-weave -g ../DataWeave.tmLanguage 'cases/*.dwl'"
   },
   "dependencies": {
     "vscode-tmgrammar-test": "latest"
